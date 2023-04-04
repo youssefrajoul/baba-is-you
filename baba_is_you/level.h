@@ -7,12 +7,13 @@
 using namespace std;
 
 class Level{
-    int level;
-    vector<vector<string>> map;
-
+    int _level;
+    vector<vector<string>> _map;
 public:
     Level(int level);
-    std::vector<vector<string>> getMap();
+    std::vector<vector<std::string>> getMap();
+    int getRows();
+    int getCols();
 };
 
 #endif // LEVEL_H

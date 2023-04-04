@@ -8,16 +8,20 @@
 #include <vector>
 
 class Board{
-    const int _ROWS;
-    const int _COLS;
-    std::vector<std::vector<Square>> board;
+    int _rows;
+    int _cols;
+    Square ***board;
 //    std::vector<Observer> observers;
 public:
-    Board();
+    Board(int rows, int cols);
+    ~Board();
+    void fillBoard(std::vector<std::vector<std::string>> items);
     void setItem(Item item, Position pos);
     Item getItem(Position pos);
     void removeItem(Position pos);
-    void checkNextPos(Direction dir);
+    Status nextPosStatus(Position pos, Direction dir);
+    Type nextPosType(Position pos, Direction dir);
+    void printBoard();
 };
 
 #endif // BOARD_H

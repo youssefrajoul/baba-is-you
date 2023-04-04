@@ -7,9 +7,13 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # ask for all warnings and strict compliance with the standard
 set(CMAKE_CXX_FLAGS "-Wall -pedantic-errors")
-add_executable(baba_is_you main.cpp direction.h direction.cpp position.h
+add_executable(baba_is_you direction.h direction.cpp position.h
     position.cpp MaterielType.cpp item.h item.cpp square.h square.cpp
-    level.cpp level.h board.h
+    level.cpp level.h board.cpp board.h
+    status.cpp status.h
+    type.cpp type.h
+    game.cpp game.h
+    main-console.cpp
     )
 
 install(TARGETS baba_is_you

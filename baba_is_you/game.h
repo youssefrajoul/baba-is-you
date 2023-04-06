@@ -11,7 +11,7 @@ class Game{
     Level _level;
 
 public:
-    Game(Board board, Level level);
+    Game(Board &board, Level &level);
     void renderBoard();
     void play();
     bool isGameOver();

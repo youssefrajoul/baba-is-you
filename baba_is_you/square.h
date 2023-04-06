@@ -4,13 +4,14 @@
 #include "item.h"
 
 class Square{
-    std::vector<Item> items;
+    std::vector<Item> _items;
 public:
     Square()=default;
-    Square(Item item);
+    Square(Item &item);
     Item getTopItem();
     std::vector<Item> getAllItems();
-    void setItem(Item item);
+    void setItem(Item &item);
+    void cleanSquare();
 };
 
 #endif // SQUARE_H

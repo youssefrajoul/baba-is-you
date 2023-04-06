@@ -13,6 +13,7 @@ class Item{
     Status _status;
 
 public:
+    Item()=default;
     Item(Position pos, Type type, Status status);
     Position getPosition();
     void setPosition(Direction dir);

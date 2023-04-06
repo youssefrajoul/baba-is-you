@@ -6,19 +6,20 @@
 #include "item.h"
 #include "direction.h"
 #include <vector>
+#include <array>
+#include <optional>
 
 class Board{
     int _rows;
     int _cols;
-    Square ***board;
+    std::array<std::array<std::optional<Square>, 18>, 18> _array;
 //    std::vector<Observer> observers;
 public:
     Board(int rows, int cols);
-    ~Board();
     void fillBoard(std::vector<std::vector<std::string>> items);
-    void setItem(Item item, Position pos);
+    void setItem(Item &item, Position &pos);
     Item getItem(Position pos);
-    void removeItem(Position pos);
+    void removeItems(Position pos);
     Status nextPosStatus(Position pos, Direction dir);
     Type nextPosType(Position pos, Direction dir);
     void printBoard();

@@ -14,9 +14,8 @@ void Item::setPosition(Direction dir){
     //à faire plus tard
 }
 
-Type getType(){
-    //    Type::BABA to be removed later
-    return Type::BABA;
+Type Item::getType(){
+    return this->_type;
 }
 
 void Item::setType(Type type) {
@@ -24,8 +23,7 @@ void Item::setType(Type type) {
 }
 
 Status Item::getStatus(){
-    //    Status::KILL to be removed later
-    return Status::KILL;
+    return this->_status;
 }
 
 void Item::setStatus(Status status){

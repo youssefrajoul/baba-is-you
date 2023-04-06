@@ -1,20 +1,22 @@
 #ifndef TYPE_H
 #define TYPE_H
 
-enum class Type{
-    WALL,TEXT_WALL,
-    BABA,TEXT_BABA,
-    /*YOU,*/TEXT_YOU,
-    LAVA,TEXT_LAVA,
-    WATER,TEXT_WATER,
-    ROCK,TEXT_ROCK,
-    ICE,TEXT_ICE,
-    GRASS,TEXT_GRASS,
-    SKULL,TEXT_SKULL,
-    FLAG,TEXT_FALG,
-    TEXT_HOT,
-    IS,
-    EMPTY,TEXT_EMPTY,
+#include <iostream>
+
+enum class Type : char {
+    WALL = 'W',TEXT_WALL = 'T',
+    BABA = 'B',TEXT_BABA = 'T',
+    /*YOU,*/TEXT_YOU = 'T',
+    LAVA = 'L',TEXT_LAVA = 'T',
+    WATER = 'T',TEXT_WATER = 'T',
+    ROCK = 'R',TEXT_ROCK = 'T',
+    ICE = 'I',TEXT_ICE = 'T',
+    GRASS = 'G',TEXT_GRASS = 'T',
+    SKULL = 'S',TEXT_SKULL = 'T',
+    FLAG = 'F',TEXT_FALG = 'T',
+    TEXT_HOT = 'T',
+    IS = 'I',
+    EMPTY = 'E',TEXT_EMPTY = 'T',
 };
 
 

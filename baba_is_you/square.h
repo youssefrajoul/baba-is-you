@@ -1,16 +1,16 @@
 #ifndef SQUARE_H
 #define SQUARE_H
-#include <vector>
+#include <list>
 #include "item.h"
 
 class Square{
-    std::vector<Item> _items;
+    std::list<Item> _items;
 public:
     Square()=default;
     Square(Item &item);
-    Item getTopItem();
-    std::vector<Item> getAllItems();
-    void setItem(Item &item);
+    Item& getTopItem();
+    std::list<Item>& getAllItems();
+    void addItem(Item &item);
     void cleanSquare();
 };
 

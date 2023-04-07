@@ -1,24 +1,19 @@
 #include "square.h"
 
 Square::Square(Item &item){
-    std::cout << "test2" << std::endl;
-    this->_items.insert(_items.begin(), item);
-    std::cout << "test2" << std::endl;
+    this->_items.push_back(item);
 }
 
-Item Square::getTopItem(){
-    std::cout << this->_items.size();
+Item& Square::getTopItem(){
     return this->_items.back();
 }
 
-std::vector<Item> Square::getAllItems(){
+std::list<Item> &Square::getAllItems(){
     return this->_items;
 }
 
-void Square::setItem(Item &item){
-    std::cout << this->_items.size() << std::endl;
+void Square::addItem(Item &item){
     this->_items.push_back(item);
-    std::cout << this->_items.size() << std::endl;
 }
 
 void Square::cleanSquare(){

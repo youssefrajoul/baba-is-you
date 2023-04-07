@@ -5,7 +5,10 @@
 
 
 Game::Game(Board &board, Level &level) : _board(board), _level(level){
-    this->_board = Board(_level.getRows(), _level.getCols());
+}
+
+Board Game::getBoard(){
+    return this->_board;
 }
 
 void Game::renderBoard(){

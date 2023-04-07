@@ -12,6 +12,7 @@ class Game{
 
 public:
     Game(Board &board, Level &level);
+    Board getBoard();
     void renderBoard();
     void play();
     bool isGameOver();

@@ -1,7 +1,6 @@
 #ifndef ITEM_H
 #define ITEM_H
 #include "position.h"
-#include "MaterielType.cpp"
 #include "type.h"
 #include "status.h"
 #include "direction.h"

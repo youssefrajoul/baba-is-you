@@ -2,11 +2,12 @@
 #define STATUS_H
 
 enum class Status : char{
-    PUSH= 'P',
-    SINK= 'S',
-    STOP= 'T',
-    WIN= 'W',
-    KILL= 'K',
+    MOVE = 'M',
+    PUSH = 'P',
+    SINK = 'S',
+    STOP = 'T',
+    WIN = 'W',
+    KILL = 'K',
     NOTHING = 'N'
 };
 

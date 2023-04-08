@@ -4,19 +4,24 @@
 #include <iostream>
 
 enum class Type : char {
-    WALL = 'W',TEXT_WALL = 'T',
-    BABA = 'B',TEXT_BABA = 'T',
-    /*YOU,*/TEXT_YOU = 'T',
-    LAVA = 'L',TEXT_LAVA = 'T',
-    WATER = 'T',TEXT_WATER = 'T',
-    ROCK = 'R',TEXT_ROCK = 'T',
-    ICE = 'I',TEXT_ICE = 'T',
-    GRASS = 'G',TEXT_GRASS = 'T',
-    SKULL = 'S',TEXT_SKULL = 'T',
-    FLAG = 'F',TEXT_FALG = 'T',
-    TEXT_HOT = 'T',
-    IS = 'I',
-    EMPTY = 'E',TEXT_EMPTY = 'T',
+    WALL = 'W',TEXT_WALL = 'a',
+    BABA = 'B',TEXT_BABA = 'b',
+    LAVA = 'L',TEXT_LAVA = 'l',
+    WATER = 'T',TEXT_WATER = 't',
+    ROCK = 'R',TEXT_ROCK = 'r',
+    ICE = 'I',TEXT_ICE = 'i',
+    GRASS = 'G',TEXT_GRASS = 'g',
+    SKULL = 'S',TEXT_SKULL = 's',
+    FLAG = 'F',TEXT_FALG = 'f',
+    EMPTY = 'E',TEXT_EMPTY = 'e',
+    YOU = 'y',
+    HOT = 'h',
+    IS = 'i',
+    METAL = 'M',
+    STOP = 's',
+    WIN = 'w',
+    BEST = 'b',
+    END = 'e'
 };
 
 

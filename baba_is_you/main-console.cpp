@@ -14,7 +14,7 @@ using namespace std;
 
 int main()
 {
-    Level level(2);
+    Level level(3);
     Board board(level.getRows(), level.getCols());
     Game game(board, level);
     game.renderBoard();

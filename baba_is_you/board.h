@@ -8,11 +8,16 @@
 #include "direction.h"
 #include <vector>
 #include <array>
+#include <map>
+#include <variant>
 
 class Board{
     int _rows;
     int _cols;
     std::array<std::array<Square, 20>, 20> _array;
+    std::map<Type, std::variant<Type, Status>> itemsStatus;
+    std::vector<Item> isItems;
+    std::vector<Item> movableItems;
 //    std::vector<Observer> observers;
 public:
     Board(int rows, int cols);
@@ -24,6 +29,7 @@ public:
     void removeItems(Position pos);
     Status nextPosStatus(Position pos, Direction dir);
     Type nextPosType(Position pos, Direction dir);
+    bool isInside(Position position);
     void printBoard();
 };
 

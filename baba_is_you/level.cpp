@@ -8,8 +8,7 @@
 
 
 Level::Level(int level): _level(level){
-//    string filePath = "../baba_is_you/levels/level_" + std::to_string(this->_level) + ".txt";
-    string filePath = "C:/Users/Youssef/Desktop/baba-is-you/y-rajoul-t-ahmad/baba_is_you/levels/level_2.txt";
+    string filePath = "../baba_is_you/levels/level_" + std::to_string(this->_level) + ".txt";
     ifstream infile(filePath);
     if (!infile.is_open()) {
         cout << filePath << endl;

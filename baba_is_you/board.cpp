@@ -41,6 +41,11 @@ Board::Board(int rows, int cols) {
     }
 }
 
+// soit list apres le fillBoard
+// soit parcourir le tableau
+// soit checker a coté du ??? is you
+// soit map avec le text et le statut
+
 std::array<std::array<Square, 20>, 20> &Board::getBoard(){
     return this->_array;
 }
@@ -146,14 +151,59 @@ void Board::removeItems(Position pos){
 }
 
 Status Board::nextPosStatus(Position pos, Direction dir){
-    Position nextPos(pos.getX(), pos.getY());// nextPos algorithm TODO
-    return this->_array[nextPos.getX()][nextPos.getY()].getTopItem().getStatus();
+    switch(dir){
+    case Direction::UP :
+        pos.setX(pos.getX()-1);
+        return this->getItem(pos).getStatus();
+        break;
+   case Direction::LEFT :
+        pos.setY(pos.getY()-1);
+        return this->getItem(pos).getStatus();
+        break;
+   case Direction::RIGHT :
+        pos.setY(pos.getY()+1);
+        return this->getItem(pos).getStatus();
+        break;
+   case Direction::DOWN :
+        pos.setX(pos.getX()-1);
+        return this->getItem(pos).getStatus();
+        break;
+    }
 }
 
 Type Board::nextPosType(Position pos, Direction dir){
-    Position nextPos(pos.getX(), pos.getY());// nextPos algorithm TODO
-    return Type::EMPTY;
+
+     switch(dir){
+     case Direction::UP :
+         pos.setX(pos.getX()-1);
+         return this->getItem(pos).getType();
+         break;
+    case Direction::LEFT :
+         pos.setY(pos.getY()-1);
+         return this->getItem(pos).getType();
+         break;
+    case Direction::RIGHT :
+         pos.setY(pos.getY()+1);
+         return this->getItem(pos).getType();
+         break;
+    case Direction::DOWN :
+         pos.setX(pos.getX()-1);
+         return this->getItem(pos).getType();
+         break;
+     }
 }
+
+bool Board::isInside(Position position) {
+    if(position.getX() < 0 || position.getX() > this->_rows) {
+        return false;
+    } else if(position.getY() < 0 || position.getY() > this->_cols) {
+        return false;
+    }
+    return true;
+}
+
+
+
 
 void Board::printBoard(){
     for (int i = 0; i < 20; i++) {

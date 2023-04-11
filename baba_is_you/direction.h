@@ -2,20 +2,19 @@
 #define DIRECTION_H
 #include <iostream>
 
-class Direction{
+/*class Direction{
     std::pair<int, int> right;
     std::pair<int, int> up;
     std::pair<int, int> left;
     std::pair<int, int> down;
+};*/
+
+
+
+enum class Direction{
+
+ UP,DOWN,LEFT,RIGHT
 };
-
-
-//#include "position.h"
-
-//enum class Direction{
-
-// UP,DOWN,LEFT,RIGHT
-//};
 
 ////constexpr Position::Position to_position(Direction d);
 

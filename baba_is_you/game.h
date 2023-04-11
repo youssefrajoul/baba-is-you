@@ -17,7 +17,7 @@ public:
     void play();
     bool isGameOver();
     void nextLevel();
-    void move();
+    void move(Position position, Direction direction);
 };
 
 #endif // GAME_H

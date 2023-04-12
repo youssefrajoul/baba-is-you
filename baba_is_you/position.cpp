@@ -21,6 +21,25 @@ void Position::setY(int y){
     this->y = y;
 }
 
+Position Position::nextPos(Direction dir){
+    Position nextPos;
+
+    switch(dir){
+    case Direction::UP :
+        nextPos =Position(this->getX()-1,this->getY());
+        break;
+   case Direction::LEFT :
+        nextPos =Position(this->getX(),this->getY()-1);
+        break;
+   case Direction::RIGHT :
+         nextPos =Position(this->getX(),this->getY()+1);
+        break;
+   case Direction::DOWN :
+         nextPos =Position(this->getX()+1,this->getY());
+        break;
+    }
+    return nextPos;
+}
 
 
 bool Position::operator==(Position & lhs){
@@ -33,4 +52,3 @@ bool Position::operator==(Position & lhs){
 std::ostream& operator<<(std::ostream& out, Position& obj) {
     return out << "(" << obj.getX() << ":" << obj.getY() << ")";
 }
-

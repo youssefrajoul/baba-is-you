@@ -12,8 +12,11 @@ add_executable(baba_is_you direction.h direction.cpp position.h
     level.cpp level.h board.cpp board.h
     status.cpp status.h
     type.cpp type.h
+    text.h
     game.cpp game.h
     main-console.cpp
+    view/view.h view/view.cpp
+    controller/controller.h controller/controller.cpp
     )
 
 install(TARGETS baba_is_you

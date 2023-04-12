@@ -6,18 +6,19 @@
 #include "board.h"
 #include "level.h"
 
+
 class Game{
     Board _board;
     Level _level;
-
 public:
-    Game(Board &board, Level &level);
-    Board getBoard();
+    Game();
+    Board& getBoard();
     void renderBoard();
     void play();
     bool isGameOver();
     void nextLevel();
-    void move(Position position, Direction direction);
+    void move(Direction direction);
+    void pushItems(Board& borde,Position pos, Direction dir);
 };
 
 #endif // GAME_H

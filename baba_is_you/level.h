@@ -11,6 +11,7 @@ class Level{
     vector<vector<string>> _map;
 public:
     Level(int level);
+    Level() = default;
     std::vector<vector<std::string>> getMap();
     int getRows();
     int getCols();

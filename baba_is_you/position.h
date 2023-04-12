@@ -1,6 +1,7 @@
 #ifndef POSITION_H
 #define POSITION_H
 #include <iostream>
+#include "direction.h"
 
 
 
@@ -13,7 +14,7 @@ public:
     int getY();
     void setX(int x);
     void setY(int Y);
-    Position nextPos(std::pair<int,int> dir);
+    Position nextPos(Direction dir);
     bool operator==(Position & lhs);
     friend std::ostream& operator<<(std::ostream& out, Position& obj);
 };

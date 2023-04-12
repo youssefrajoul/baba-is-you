@@ -19,3 +19,7 @@ void Square::addItem(Item &item){
 void Square::cleanSquare(){
 //    _items.erase(_items.begin());
 }
+
+void Square::removeTopItem(){
+    this->_items.pop_back();
+}

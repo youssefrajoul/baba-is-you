@@ -6,6 +6,8 @@
 #include "position.h"
 #include "item.h"
 #include "direction.h"
+#include "level.h"
+
 #include <vector>
 #include <array>
 #include <map>
@@ -14,22 +16,35 @@
 class Board{
     int _rows;
     int _cols;
+    Level _level;
     std::array<std::array<Square, 20>, 20> _array;
-    std::map<Type, std::variant<Type, Status>> itemsStatus;
-    std::vector<Item> isItems;
-    std::vector<Item> movableItems;
-//    std::vector<Observer> observers;
+    std::map<std::variant<Type, Status>, Type> _itemsStatus;
+    std::vector<Item> _isItems;
+    std::vector<Item> _movableItems;
+    //    std::vector<Observer> observers;
 public:
-    Board(int rows, int cols);
-    std::array<std::array<Square,20>,20> &getBoard();
+    //    these methods need to be in order cause too much (new Class?)
+    Board(Level& level);
+    Board() = default;
+    std::array<std::array<Square, 20>, 20>& getArray();
     void fillBoard(std::vector<std::vector<std::string>> items);
-    std::pair<Type, Status> getType(std::string word);
+    std::pair<Type, Status> getTypeStatus(std::string word);
     void setItem(Item &item, Position &pos);
-    Item getItem(Position pos);
+    Item& getItemAt(Position pos);
     void removeItems(Position pos);
-    Status nextPosStatus(Position pos, Direction dir);
+    void updateMovableItems();
+    std::vector<Item>& getMovables();
     Type nextPosType(Position pos, Direction dir);
+    Status nextPosStatus(Position pos, Direction dir);
+    std::vector<Item>& getIsItems();
+    void updateItemsStatus();
+    Status translateTextStatus(Type type);
+    Type translateTextType(Type type);
+    void findIsItems();
+    bool isText(int x, int y);
     bool isInside(Position position);
+    bool isEmpty(Position pos);
+    bool isPushable(Position pos);
     void printBoard();
 };
 

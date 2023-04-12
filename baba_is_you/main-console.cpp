@@ -8,17 +8,14 @@
 
 using namespace std;
 
-#include "game.h"
-#include "board.h"
-#include "level.h"
+#include "controller/controller.h"
 
 int main()
 {
-    Level level(3);
-    Board board(level.getRows(), level.getCols());
-    Game game(board, level);
-    game.renderBoard();
-    game.getBoard().printBoard();
+    Game game;
+    View view;
+    Controller controller = Controller(game, view);
+    controller.start();
     return 0;
 }
 

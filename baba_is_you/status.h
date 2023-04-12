@@ -4,11 +4,13 @@
 enum class Status : char{
     MOVE = 'M',
     PUSH = 'P',
-    SINK = 'S',
-    STOP = 'T',
+    SINK = 'I',
+    STOP = 'S',
     WIN = 'W',
     KILL = 'K',
     NOTHING = 'N'
 };
+
+
 
 #endif // STATUS_H

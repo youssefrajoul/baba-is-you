@@ -4,7 +4,7 @@
 
 
 Game::Game() {
-    std::cout << "Game Object creation" << std::endl;
+   // std::cout << "Game Object creation" << std::endl;
     this->_level = Level(0);
     this->_board = Board(_level);
 }
@@ -23,16 +23,21 @@ void Game::move(Direction direction){
 
     // Printing elements of an array using
     // foreach loop
+    std::cout << this->_board.getMovables().size()<< std::endl;
+    std::cout <<  static_cast<char>(this->_board.getMovables().back().getType())<< std::endl;
+    std::cout << this->_board.getMovables().back().getPosition().getX();
+     std::cout << this->_board.getMovables().back().getPosition().getY()<< std::endl;
     for (Item& item : this->_board.getMovables()){
 
 
         Position oldPos = item.getPosition();
+        std::cout << oldPos.getY() << std::endl;
         Position nextPos =item.getPosition().nextPos(direction);
         if(this->_board.isInside(nextPos)){
             //deplacement simple
             if(this->_board.isEmpty(nextPos)){
                 this->_board.setItem(item, nextPos);
-                item.setPosition(direction);
+                item.setPosition(nextPos);
                 this->_board.getArray()[oldPos.getX()][oldPos.getY()].removeTopItem();
             }else{
                 // pousser les item
@@ -53,6 +58,8 @@ void Game::move(Direction direction){
 
             }*/
     }
+    std::cout << this->_board.getMovables().back().getPosition().getX();
+     std::cout << this->_board.getMovables().back().getPosition().getY()<< std::endl;
 
 }
 
@@ -65,10 +72,16 @@ void Game::pushItems(Board& board,Position pos, Direction dir){
     }else{
         Item item = board.getItemAt(pos);
         board.setItem(item,nextPos);
-        item.setPosition(dir);
+        item.setPosition(nextPos);
         board.getArray().at(pos.getX())
                 .at(pos.getY()).removeTopItem();
     }
 
     // }
+}
+
+bool Game::isGameOver(){
+
+    //TO DO later
+    return true;
 }

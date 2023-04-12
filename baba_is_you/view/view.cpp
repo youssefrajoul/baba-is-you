@@ -19,3 +19,13 @@ void View::printBoard(Game& game){
         std::cout << std::endl;
     }
 }
+std::string View::askDirection(){
+    std::cout << "Eter u for Up"<< std::endl;
+    std::cout << "Eter d for Down"<< std::endl;
+    std::cout << "Eter l for Lift"<< std::endl;
+    std::cout << "Eter r for Right"<< std::endl;
+
+    std::string d;
+    std::cin >>d;
+    return d;
+}

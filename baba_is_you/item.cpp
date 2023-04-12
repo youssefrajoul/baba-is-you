@@ -10,8 +10,11 @@ Position Item::getPosition(){
     return this->_position;
 }
 
-void Item::setPosition(Direction dir){
-    //à faire plus tard
+void Item::setPosition(Position pos){
+    this->_position.setX(pos.getX());
+    this->_position.setY(pos.getY());
+
+
 }
 
 Type Item::getType(){

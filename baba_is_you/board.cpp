@@ -8,7 +8,7 @@
 #include "item.h"
 
 Board::Board(Level& level) : _level(level){
-    std::cout << "Board Object Creation" << std::endl;
+ //   std::cout << "Board Object Creation" << std::endl;
     this->_rows = this->_level.getRows();
     this->_cols = this->_level.getCols();
     for (int i = 0; i < 20; i++) {
@@ -372,7 +372,7 @@ bool Board::isInside(Position position) {
 
 bool Board::isEmpty(Position pos){
 
-    return (this->getItemAt(pos).getType()== Type::EMPTY);
+    return (this->getItemAt(pos).getType()== Type::EMPTY || this->getItemAt(pos).getType()== Type::METAL);
 }
 bool Board::isPushable(Position pos){
 

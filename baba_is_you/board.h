@@ -45,6 +45,7 @@ public:
     bool isInside(Position position);
     bool isEmpty(Position pos);
     bool isPushable(Position pos);
+
     void printBoard();
 };
 

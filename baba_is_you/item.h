@@ -15,7 +15,7 @@ public:
     Item() = default;
     Item(Position pos, Type type, Status status);
     Position getPosition();
-    void setPosition(Direction dir);
+    void setPosition(Position pos);
     Type getType();
     void setType(Type type);
     Status getStatus();

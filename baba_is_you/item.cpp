@@ -1,20 +1,17 @@
 #include "item.h"
 
-Item::Item(Position pos, Type type, Status status){
+Item::Item(Position& pos, Type type, Status status){
     this->_position = pos;
     this->_type = type;
     this->_status = status;
 }
 
-Position Item::getPosition(){
+Position& Item::getPosition(){
     return this->_position;
 }
 
-void Item::setPosition(Position pos){
-    this->_position.setX(pos.getX());
-    this->_position.setY(pos.getY());
-
-
+void Item::setPosition(Position& pos){
+    this->_position = pos;
 }
 
 Type Item::getType(){

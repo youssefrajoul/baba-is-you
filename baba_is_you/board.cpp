@@ -55,9 +55,6 @@ void Board::fillBoard(std::vector<std::vector<std::string>> items){
         Status status = pair.second;
         Item item(pos, type, status);
         setItem(item, pos);
-        if(type == Type::BABA){
-            _movableItems.push_back(item);
-        }
     }
 }
 
@@ -329,12 +326,20 @@ void Board::updateItemsStatus(){
 
 
 void Board::updateMovableItems(){
+    // TODO call methods here
+    findIsItems();
+    updateItemsStatus();
     _movableItems.clear();
     Type type = _itemsStatus[Status::MOVE];
+
     for (int i = 0; i < 20; i++) {
         for (int j = 0; j < 20; j++) {
             if(_array[i][j].getTopItem().getType() == type){
                 _movableItems.push_back(_array[i][j].getTopItem());
+                std::cout << "type: " << static_cast<char>(_array[i][j].getTopItem().getType()) << std::endl;
+                std::cout << "X: " << _array[i][j].getTopItem().getPosition().getX() << "i: " << i << std::endl;
+                std::cout << "Y: " << _array[i][j].getTopItem().getPosition().getY() << "j: " << j << std::endl;
+
             }
         }
     }
@@ -371,7 +376,6 @@ bool Board::isInside(Position position) {
 }
 
 bool Board::isEmpty(Position pos){
-
     return (this->getItemAt(pos).getType()== Type::EMPTY || this->getItemAt(pos).getType()== Type::METAL);
 }
 bool Board::isPushable(Position pos){

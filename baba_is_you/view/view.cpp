@@ -14,18 +14,18 @@ void View::printBoard(Game& game){
                                                   .getArray()[i][j]
                                                   .getTopItem()
                                                   .getType());
-            //            std::cout << "print board test" << std::endl;
         }
         std::cout << std::endl;
     }
 }
 std::string View::askDirection(){
-    std::cout << "Eter u for Up"<< std::endl;
-    std::cout << "Eter d for Down"<< std::endl;
-    std::cout << "Eter l for Lift"<< std::endl;
-    std::cout << "Eter r for Right"<< std::endl;
+    std::cout << "Eter z for Up"<< std::endl;
+    std::cout << "Eter s for Down"<< std::endl;
+    std::cout << "Eter q for Lift"<< std::endl;
+    std::cout << "Eter d for Right"<< std::endl;
 
     std::string d;
-    std::cin >>d;
+    std::cin >> d;
+    std::cout << "Direction: "<< d << std::endl;
     return d;
 }

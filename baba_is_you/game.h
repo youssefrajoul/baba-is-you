@@ -18,7 +18,7 @@ public:
     bool isGameOver();
     void nextLevel();
     void move(Direction direction);
-    void pushItems(Board& borde,Position pos, Direction dir);
+    void pushItems(Board& borde,Position& pos, Direction dir);
 };
 
 #endif // GAME_H

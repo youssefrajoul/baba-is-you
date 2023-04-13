@@ -11,7 +11,7 @@ int Position::getX(){
 
 int Position::getY(){
     return y;
-   }
+}
 
 void Position::setX(int x){
     this->x = x;
@@ -23,19 +23,18 @@ void Position::setY(int y){
 
 Position Position::nextPos(Direction dir){
     Position nextPos;
-
     switch(dir){
     case Direction::UP :
-        nextPos =Position(this->getX()-1,this->getY());
+        nextPos = Position(this->getX()-1,this->getY());
         break;
-   case Direction::LEFT :
-        nextPos =Position(this->getX(),this->getY()-1);
+    case Direction::LEFT :
+        nextPos = Position(this->getX(),this->getY()-1);
         break;
-   case Direction::RIGHT :
-         nextPos =Position(this->getX(),this->getY()+1);
+    case Direction::RIGHT :
+        nextPos = Position(this->getX(),this->getY()+1);
         break;
-   case Direction::DOWN :
-         nextPos =Position(this->getX()+1,this->getY());
+    case Direction::DOWN :
+        nextPos = Position(this->getX()+1,this->getY());
         break;
     }
     return nextPos;
@@ -44,8 +43,8 @@ Position Position::nextPos(Direction dir){
 
 bool Position::operator==(Position & lhs){
     if((lhs.getX() == this->x)&& (lhs.getY() == this->y)){
-            return true;
-        }
+        return true;
+    }
     return false;
 }
 

@@ -3,7 +3,6 @@
 #include "position.h"
 #include "type.h"
 #include "status.h"
-#include "direction.h"
 
 
 class Item{
@@ -13,9 +12,9 @@ class Item{
 
 public:
     Item() = default;
-    Item(Position pos, Type type, Status status);
-    Position getPosition();
-    void setPosition(Position pos);
+    Item(Position& pos, Type type, Status status);
+    Position& getPosition();
+    void setPosition(Position& pos);
     Type getType();
     void setType(Type type);
     Status getStatus();

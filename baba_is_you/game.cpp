@@ -32,7 +32,7 @@ void Game::move(Direction direction){
                 item.setPosition(nextPos);
                 this->_board.setItem(item, nextPos);
                 this->_board.getArray()[oldPos.getX()][oldPos.getY()].removeTopItem();
-            }else{
+            }else if(_board.isPushable(nextPos)){
                 // pousser les item
                 pushItems(this->_board,oldPos,direction);
 
@@ -62,8 +62,8 @@ void Game::pushItems(Board& board, Position &pos, Direction dir){
         pushItems(board,nextPos,dir);
     }else{
         Item item = board.getItemAt(pos);
-        board.setItem(item,nextPos);
         item.setPosition(nextPos);
+        board.setItem(item,nextPos);
         board.getArray().at(pos.getX())
                 .at(pos.getY()).removeTopItem();
     }

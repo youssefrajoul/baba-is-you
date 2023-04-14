@@ -45,8 +45,10 @@ public:
     bool isInside(Position position);
     bool isEmpty(Position pos);
     bool isPushable(Position pos);
+    bool isKiller(Position pos);
+    bool isSink(Position pos);
 
-    void printBoard();
+   // void printBoard();
 };
 
 #endif // BOARD_H

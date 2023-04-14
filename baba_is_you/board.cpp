@@ -382,5 +382,12 @@ bool Board::isPushable(Position pos){
 
     return (this->getItemAt(pos).getStatus()== Status::PUSH);
 }
+bool Board::isKiller(Position pos){
+    return (this->getItemAt(pos).getStatus()== Status::KILL);
+}
+
+bool Board::isSink(Position pos){
+     return (this->getItemAt(pos).getStatus()== Status::SINK);
+}
 
 

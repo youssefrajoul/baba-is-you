@@ -1,16 +1,10 @@
-#include <iostream>
-#include <vector>
-#include <string>
-
 #include "board.h"
-#include "level.h"
-#include "square.h"
-#include "item.h"
 
 Board::Board(Level& level) : _level(level){
  //   std::cout << "Board Object Creation" << std::endl;
     this->_rows = this->_level.getRows();
     this->_cols = this->_level.getCols();
+    this->_win = false;
     for (int i = 0; i < 20; i++) {
         for (int j = 0; j < 20; j++) {
             if(i == 0) {
@@ -64,93 +58,116 @@ std::pair<Type, Status> Board::getTypeStatus(std::string word){
     if (word == "grass") {
         type = Type::GRASS;
         status = Status::STOP;
+        _itemsStatus[type] = status;
     }
     else if (word == "wall") {
         type = Type::WALL;
-        status = Status::STOP;
+        status = Status::NOTHING;
+        _itemsStatus[type] = status;
     }
     else if (word == "metal") {
         type = Type::METAL;
         status = Status::NOTHING;
+        _itemsStatus[type] = status;
+
     }
     else if (word == "is") {
         type = Type::TEXT_IS;
         status = Status::PUSH;
+        _itemsStatus[type] = status;
     }
     else if (word == "flag") {
         type = Type::FLAG;
-        status = Status::PUSH;
+        status = Status::NOTHING;
+        _itemsStatus[type] = status;
     }
     else if (word == "stop") {
         type = Type::TEXT_STOP;
-        status = Status::STOP;
+        status = Status::PUSH;
+        _itemsStatus[type] = status;
     }
     else if (word == "baba") {
         type = Type::BABA;
         status = Status::MOVE;
+        _itemsStatus[type] = status;
     }
     else if (word == "skull") {
         type = Type::SKULL;
-        status = Status::KILL;
+        status = Status::NOTHING;
+        _itemsStatus[type] = status;
     }
     else if (word == "lava") {
         type = Type::LAVA;
         status = Status::KILL;
+        _itemsStatus[type] = status;
     }
     else if (word == "ice") {
         type = Type::ICE;
-        status = Status::STOP;
+        status = Status::NOTHING;
+        _itemsStatus[type] = status;
     }
     else if (word == "rock") {
         type = Type::ROCK;
-        status = Status::PUSH;
+        status = Status::NOTHING;
     }
     else if (word == "text_rock") {
         type = Type::TEXT_ROCK;
         status = Status::PUSH;
+        _itemsStatus[type] = status;
     }
     else if (word == "water") {
         type = Type::WATER;
         status = Status::SINK;
+        _itemsStatus[type] = status;
     }
     else if (word == "text_flag") {
         type = Type::TEXT_FLAG;
         status = Status::PUSH;
+        _itemsStatus[type] = status;
     }
     else if (word == "win") {
         type = Type::TEXT_WIN;
-        status = Status::WIN;
+        status = Status::PUSH;
+        _itemsStatus[type] = status;
     }
     else if (word == "push") {
         type = Type::TEXT_PUSH;
         status = Status::PUSH;
+        _itemsStatus[type] = status;
     }
     else if (word == "text_baba") {
         type = Type::TEXT_BABA;
         status = Status::PUSH;
+        _itemsStatus[type] = status;
     }
     else if (word == "text_wall") {
         type = Type::TEXT_WALL;
         status = Status::PUSH;
+        _itemsStatus[type] = status;
     }
     else if (word == "text_best") {
         type = Type::TEXT_BEST;
         status = Status::PUSH;
+        _itemsStatus[type] = status;
     }
     else if (word == "you") {
         type = Type::TEXT_YOU;
         status = Status::PUSH;
+        _itemsStatus[type] = status;
     }
     else if (word == "text_water") {
         type = Type::TEXT_WATER;
         status = Status::PUSH;
+        _itemsStatus[type] = status;
     }
     else if (word == "sink") {
         type = Type::TEXT_SINK;
         status = Status::PUSH;
+        _itemsStatus[type] = status;
     }else {
         type = Type::EMPTY;
         status = Status::NOTHING;
+        _itemsStatus[type] = status;
     }
     return std::make_pair(type, status);
 }
@@ -214,7 +231,6 @@ Type Board::nextPosType(Position pos, Direction dir){
 
 bool Board::isText(int x, int y){
     Type type = _array[x][y].getTopItem().getType();
-    //    if(type == Type::TEXT_BABA || type == Type::TEXT_BABA || )
     switch (type) {
     case Type::TEXT_BABA:
         return true;
@@ -244,6 +260,9 @@ bool Board::isText(int x, int y){
         return true;
         break;
     case Type::TEXT_PUSH:
+        return true;
+        break;
+    case Type::TEXT_IS:
         return true;
         break;
     default:
@@ -299,38 +318,56 @@ Type Board::translateTextType(Type type){
 }
 
 void Board::updateItemsStatus(){
-    _itemsStatus.clear();
+    bool logicExists = false;
     Type typeH;
     Status statusH;
     Type typeV;
     Status statusV;
-    std::cout << "is items size " << _isItems.size() << std::endl;
-    for (unsigned i = 0; i < _isItems.size(); i++) {
-        Position pos = _isItems[i].getPosition();
-        if(isText(pos.getX(), pos.getY()-1) && isText(pos.getX(), pos.getY()+1)) {
-            // Left of IS
-            typeH = translateTextType(_array[pos.getX()][pos.getY()-1].getTopItem().getType());
-            // Right of IS
-            statusH = translateTextStatus(_array[pos.getX()][pos.getY()+1].getTopItem().getType());
-            _itemsStatus[statusH] = typeH;
+    std::cout << "is items size " << _textTypeItems.size() << std::endl;
+    for (unsigned i = 0; i < _textTypeItems.size(); i++) {
+        Position pos = _textTypeItems[i].getPosition();
+        if(_array[pos.getX()][pos.getY()+1].getTopItem().getType() == Type::TEXT_IS
+                && isText(pos.getX(), pos.getY()+2)) {
+            typeH = translateTextType(getItemAt(pos).getType());
+            statusH = translateTextStatus(_array[pos.getX()][pos.getY()+2].getTopItem().getType());
+            _itemsStatus[typeH] = statusH;
+            logicExists = true;
+            std::cout << "item/status " << static_cast<char>(typeH) << "/" << static_cast<char>(_itemsStatus[typeH]) << std::endl;
         }
-        if(isText(pos.getX()-1, pos.getY()) && isText(pos.getX()+1, pos.getY())){
-            // Above IS
-            typeV = translateTextType(_array[pos.getX()-1][pos.getY()].getTopItem().getType());
-            // Bottom of IS
-            statusV = translateTextStatus(_array[pos.getX()+1][pos.getY()].getTopItem().getType());
-            _itemsStatus[statusV] = typeV;
+        if(_array[pos.getX()+1][pos.getY()].getTopItem().getType() == Type::TEXT_IS
+                && isText(pos.getX()+2, pos.getY())) {
+            typeV = translateTextType(getItemAt(pos).getType());
+            statusV = translateTextStatus(_array[pos.getX()+2][pos.getY()].getTopItem().getType());
+            _itemsStatus[typeV] = statusV;
+            logicExists = true;
+        }
+        if(!logicExists){
+            _itemsStatus[translateTextType(getItemAt(pos).getType())] = Status::NOTHING;
         }
     }
+    for (int i = 1; i < 19; i++) {
+        for (int j = 1; j < 19; j++) {
+            _array[i][j].getTopItem().setStatus(_itemsStatus[_array[i][j].getTopItem().getType()]);
+        }
+    }
+}
+std::vector<Item>& Board::getTextType(){
+    return this->_textTypeItems;
 }
 
 
 void Board::updateMovableItems(){
     // TODO call methods here
-    findIsItems();
+    findTextType();
     updateItemsStatus();
     _movableItems.clear();
-    Type type = _itemsStatus[Status::MOVE];
+    Type type;
+    for (const auto& pair : _itemsStatus) {
+        if (pair.second == Status::MOVE) {
+            type = pair.first;
+            break;
+        }
+    }
 
     for (int i = 0; i < 20; i++) {
         for (int j = 0; j < 20; j++) {
@@ -346,20 +383,27 @@ void Board::updateMovableItems(){
     std::cout << "movableItems size " << _movableItems.size() << std::endl;
 }
 
-void Board::findIsItems(){
-    getIsItems().clear();
+
+
+
+void Board::findTextType(){
+    getTextType().clear();
     for (int i = 0; i < 20; i++) {
         for (int j = 0; j < 20; j++) {
-            if(_array[i][j].getTopItem().getType() == Type::TEXT_IS){
-                getIsItems().push_back(_array[i][j].getTopItem());
+            if(_array[i][j].getTopItem().getType() == Type::TEXT_WALL
+                    || _array[i][j].getTopItem().getType() == Type::TEXT_BABA
+                    || _array[i][j].getTopItem().getType() == Type::TEXT_ROCK
+                    || _array[i][j].getTopItem().getType() == Type::TEXT_WATER
+                    || _array[i][j].getTopItem().getType() == Type::TEXT_FLAG){
+                getTextType().push_back(_array[i][j].getTopItem());
             }
         }
     }
 }
 
-std::vector<Item>& Board::getIsItems(){
-    return this->_isItems;
-}
+
+
+
 //////////////////////////////////////////
 
 std::vector<Item> &Board::getMovables(){
@@ -367,16 +411,18 @@ std::vector<Item> &Board::getMovables(){
 }
 
 bool Board::isInside(Position position) {
-    if(position.getX() < 0 || position.getX() > this->_rows) {
+    if(position.getX() < 0 || position.getX()-1 > this->_rows) {
         return false;
-    } else if(position.getY() < 0 || position.getY() > this->_cols) {
+    } else if(position.getY() < 0 || position.getY()-1 > this->_cols) {
         return false;
     }
     return true;
 }
 
 bool Board::isEmpty(Position pos){
-    return (this->getItemAt(pos).getType()== Type::EMPTY || this->getItemAt(pos).getType()== Type::METAL);
+    return (this->getItemAt(pos).getType()== Type::EMPTY
+            || this->getItemAt(pos).getType()== Type::METAL
+            || this->getItemAt(pos).getStatus() == Status::NOTHING);
 }
 bool Board::isPushable(Position pos){
 
@@ -388,6 +434,21 @@ bool Board::isKiller(Position pos){
 
 bool Board::isSink(Position pos){
      return (this->getItemAt(pos).getStatus()== Status::SINK);
+}
+bool Board::isWinable(Position pos){
+     return (this->getItemAt(pos).getStatus()== Status::WIN);
+}
+
+bool Board::isStop(Position pos){
+    return (this->getItemAt(pos).getStatus()== Status::STOP);
+}
+
+bool Board::isWin(){
+    return this->_win;
+}
+
+void Board::setWin(bool b){
+    this-> _win = b;
 }
 
 

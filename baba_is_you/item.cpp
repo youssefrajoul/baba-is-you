@@ -34,3 +34,12 @@ std::ostream& operator<<(std::ostream& out, Item obj){
     return out << "à faire plus tard";
 
 }
+
+bool Item::operator==(Item & lhs){
+    if((lhs.getPosition() == this->_position)
+            && (lhs.getStatus() == this->_status)
+            && lhs.getType() == this->_type){
+        return true;
+    }
+    return false;
+}

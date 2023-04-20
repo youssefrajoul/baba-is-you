@@ -13,7 +13,7 @@ enum class Type : char {
     GRASS = 'G',
     SKULL = 'S',
     FLAG = 'F',
-    EMPTY = 'E',
+    EMPTY = ' ',
     METAL = 'M',
     END = '*',
     TEXT_IS = 'i',

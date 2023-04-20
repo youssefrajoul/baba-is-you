@@ -19,6 +19,7 @@ public:
     void setType(Type type);
     Status getStatus();
     void setStatus(Status status);
+    bool operator==(Item & lhs);
     friend std::ostream& operator<<(std::ostream& out, Item obj);
 
 };

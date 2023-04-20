@@ -20,6 +20,12 @@ void Controller::start(){
         }else if(d == "s"){
             this->_game.move(Direction::DOWN);
         }
+        if(_game.getBoard().isWin()){
+            _game.nextLevel();
+            this->_game.renderBoard();
+            //this->_game.getBoard().updateMovableItems();
+
+        }
 
         this->_game.getBoard().updateMovableItems();
         this->_view.printBoard(this->_game);

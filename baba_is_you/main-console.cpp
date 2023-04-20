@@ -1,13 +1,3 @@
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <vector>
-#include <string>
-#include <vector>
-#include <map>
-
-using namespace std;
-
 #include "controller/controller.h"
 
 int main()
@@ -18,4 +8,6 @@ int main()
     controller.start();
     return 0;
 }
+
+
 

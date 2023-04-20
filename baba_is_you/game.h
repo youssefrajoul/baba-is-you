@@ -19,6 +19,7 @@ public:
     void nextLevel();
     void move(Direction direction);
     void pushItems(Board& borde,Position& pos, Direction dir);
+
 };
 
 #endif // GAME_H

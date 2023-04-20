@@ -2,10 +2,12 @@
 
 #include "game.h"
 
+int lvl = 4;
 
 Game::Game() {
     // std::cout << "Game Object creation" << std::endl;
-    this->_level = Level(0);
+
+    this->_level = Level(lvl);
     this->_board = Board(_level);
 }
 
@@ -18,61 +20,100 @@ void Game::renderBoard(){
     this->_board.fillBoard(this->_level.getMap());
 }
 
-void Game::move(Direction direction){
-    //TO do later
-
-    // Printing elements of an array using
-    // foreach loop
+void Game::move(Direction direction){ 
     for (Item& item : this->_board.getMovables()){
         Position oldPos = item.getPosition();
         Position nextPos = item.getPosition().nextPos(direction);
+
         if(this->_board.isInside(nextPos)){
             //deplacement simple
             if(this->_board.isEmpty(nextPos)){
                 item.setPosition(nextPos);
                 this->_board.setItem(item, nextPos);
                 this->_board.getArray()[oldPos.getX()][oldPos.getY()].removeTopItem();
-            }else if(_board.isPushable(nextPos)){
+
+            }else if(this->_board.isWinable(nextPos)){
+                _board.setWin(true);
+            }
+            else if(_board.isPushable(nextPos)){
                 // pousser les item
-                pushItems(this->_board,oldPos,direction);
+                while(!_board.isEmpty(nextPos) && !_board.isWinable(nextPos)){
+                    if(!_board.isStop(nextPos)){
+                         pushItems(this->_board,oldPos,direction);
+
+                    }
+
+                     //pushItems(this->_board,oldPos,direction);
+                }
+                //pour retester s'il y a un win
+                if(this->_board.isWinable(nextPos)){
+                                _board.setWin(true);
+                            }
+                item.setPosition(nextPos);
+                this->_board.setItem(item, nextPos);
+                this->_board.getArray()[oldPos.getX()][oldPos.getY()].removeTopItem();
+
+            }else if(_board.isKiller(nextPos)){
+              this->_board.getArray()[oldPos.getX()][oldPos.getY()].removeTopItem();
+               for(int i = 0; i < _board.getMovables().size();i++){
+                   if(_board.getMovables().at(i) == item){
+                        _board.getMovables().erase(_board.getMovables().begin() + i);
+                   }
+               }
+
+            }else if(_board.isSink(nextPos)) {
+                this->_board.getArray()[nextPos.getX()][nextPos.getY()].removeTopItem();
+                this->_board.getArray()[oldPos.getX()][oldPos.getY()].removeTopItem();
+                 for(auto i = 0; i < _board.getMovables().size();i++){
+                     if(_board.getMovables().at(i) == item){
+                          _board.getMovables().erase(_board.getMovables().begin() + i);
+                     }
+                 }
+
+
 
             }
 
-
-
-        }
-        /*    if(direction == Direction::UP){
-                if(this->_board.getBoard().at(position.getX())
-                    .at(position.getY()).getTopItem()
-                    .getStatus() == Status::PUSH){
-
-
-                }
-
-            }*/
+        } 
     }
-
 }
 
 
 void Game::pushItems(Board& board, Position &pos, Direction dir){
-    //while(board.isPushable(pos)){
-    Position nextPos = pos.nextPos(dir);
-    if(board.isPushable(nextPos)){
-        pushItems(board,nextPos,dir);
-    }else{
-        Item item = board.getItemAt(pos);
-        item.setPosition(nextPos);
-        board.setItem(item,nextPos);
-        board.getArray().at(pos.getX())
-                .at(pos.getY()).removeTopItem();
-    }
 
-    // }
+    Position nextPos = pos.nextPos(dir);
+    if(_board.isInside(nextPos.nextPos(dir))){
+         std::cout << "isInside : true" << std::endl;
+        if(board.isPushable(nextPos)){
+            std::cout << "isPushable : true" << std::endl;
+           pushItems(board,nextPos,dir);
+
+        }else if (_board.isEmpty(nextPos) || _board.isWinable(nextPos)){
+                  Item item = board.getItemAt(pos);
+                  item.setPosition(nextPos);
+                  board.setItem(item,nextPos);
+                  board.getArray().at(pos.getX())
+                          .at(pos.getY()).removeTopItem();
+        }else if(_board.isSink(nextPos)){
+            this->_board.getArray()[nextPos.getX()][nextPos.getY()].removeTopItem();
+            this->_board.getArray()[pos.getX()][pos.getY()].removeTopItem();
+
+        }else if(_board.isKiller(nextPos)){
+            this->_board.getArray()[pos.getX()][pos.getY()].removeTopItem();
+
+        }
+}
+
 }
 
 bool Game::isGameOver(){
 
-    //TO DO later
-    return false;
+  return _board.getMovables().empty();
+
+}
+
+void Game::nextLevel(){
+    this->_level = Level(++lvl);
+    this->_board = Board(_level);
+
 }

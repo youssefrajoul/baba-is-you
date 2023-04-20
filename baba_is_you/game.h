@@ -1,7 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
 
-#include <iostream>
 
 #include "board.h"
 #include "level.h"
@@ -14,11 +13,11 @@ public:
     Game();
     Board& getBoard();
     void renderBoard();
-    void play();
+    void restartLevel();
     bool isGameOver();
     void nextLevel();
     void move(Direction direction);
-    void pushItems(Board& borde,Position& pos, Direction dir);
+    bool pushItems(Board& borde,Position& pos, Direction dir);
 
 };
 

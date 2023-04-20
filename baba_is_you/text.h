@@ -1,6 +1,5 @@
 #ifndef TEXT_H
 #define TEXT_H
-#include <iostream>
 
 enum class Text : char {
     TEXT_WALL = 'a',

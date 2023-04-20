@@ -32,13 +32,6 @@ void Controller::start(){
 
     }
 
-    //int i = 0;
 
 
-
-    //this->_game.renderBoard();
-    //    this->_view.printBoard(this->_game);
-    //this->_game.move(Direction::LEFT);
-    // this->_view.printBoard(this->_game);
-    //  i++;
 }

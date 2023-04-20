@@ -1,5 +1,3 @@
-#include <iostream>
-
 #include "view.h"
 
 View::View() {
@@ -28,4 +26,9 @@ std::string View::askDirection(){
     std::cin >> d;
     std::cout << "Direction: "<< d << std::endl;
     return d;
+}
+
+void View::printlost(){
+    std::cout<<"#### Sorry, You lost #### "<< std::endl;
+    std::cout << "Enter 'r' to restart"<< "\n";
 }

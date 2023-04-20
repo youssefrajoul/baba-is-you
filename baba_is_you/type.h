@@ -1,8 +1,6 @@
 #ifndef TYPE_H
 #define TYPE_H
 
-#include <iostream>
-
 enum class Type : char {
     WALL = 'W',
     BABA = 'B',

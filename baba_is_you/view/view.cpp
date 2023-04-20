@@ -28,7 +28,7 @@ std::string View::askDirection(){
     return d;
 }
 
-void View::printlost(){
+void View::printGameOver(){
     std::cout<<"#### Sorry, You lost #### "<< std::endl;
     std::cout << "Enter 'r' to restart"<< "\n";
 }

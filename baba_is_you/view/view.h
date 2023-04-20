@@ -12,7 +12,7 @@ public:
     void WelcomeMessage();
     void printBoard(Game& game);
     std::string askDirection();
-    void printlost();
+    void printGameOver();
 };
 
 #endif // VIEW_H

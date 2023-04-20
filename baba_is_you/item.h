@@ -4,7 +4,9 @@
 #include "type.h"
 #include "status.h"
 
-
+/**
+ * @brief The Item class, represent an item
+ */
 class Item{
     Position _position;
     Type _type;

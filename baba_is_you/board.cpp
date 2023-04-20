@@ -272,6 +272,7 @@ bool Board::isText(int x, int y){
     return false;
 }
 
+
 Status Board::translateTextStatus(Type type){
     switch (type) {
     case Type::TEXT_PUSH:
@@ -318,13 +319,13 @@ Type Board::translateTextType(Type type){
 }
 
 void Board::updateItemsStatus(){
-    bool logicExists = false;
     Type typeH;
     Status statusH;
     Type typeV;
     Status statusV;
     std::cout << "is items size " << _textTypeItems.size() << std::endl;
     for (unsigned i = 0; i < _textTypeItems.size(); i++) {
+        bool logicExists = false;
         Position pos = _textTypeItems[i].getPosition();
         if(_array[pos.getX()][pos.getY()+1].getTopItem().getType() == Type::TEXT_IS
                 && isText(pos.getX(), pos.getY()+2)) {

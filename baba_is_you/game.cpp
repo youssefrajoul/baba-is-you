@@ -1,6 +1,6 @@
 #include "game.h"
 
-int lvl = 0;
+int lvl = 2;
 
 Game::Game() {
     this->_level = Level(lvl);

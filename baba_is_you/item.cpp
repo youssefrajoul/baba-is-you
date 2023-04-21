@@ -57,7 +57,7 @@ bool Item::isStop(){
 }
 
 std::ostream& operator<<(std::ostream& out, Item obj){
-    return out << "à faire plus tard";
+    return out << static_cast<char>(obj.getType());
 
 }
 

@@ -2,7 +2,6 @@
 #include "status.h"
 #include "type.h"
 
-
 Level::Level(int level): _level(level){
     string filePath = "../baba_is_you/levels/level_" + std::to_string(this->_level) + ".txt";
     ifstream infile(filePath);

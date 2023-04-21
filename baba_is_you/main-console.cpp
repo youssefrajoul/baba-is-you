@@ -1,12 +1,14 @@
-#include "controller/controller.h"
+//#include "controller/controller.h"
+#include "test/test.h"
 
 int main()
 {
-    Game game;
+   run_Tests();
+    /*Game game;
     View view;
     Controller controller = Controller(game, view);
     controller.start();
-    return 0;
+    return 0;*/
 }
 
 

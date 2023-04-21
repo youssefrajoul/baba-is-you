@@ -11,9 +11,17 @@ Game::Game() {
 Board& Game::getBoard(){
     return this->_board;
 }
+int Game::getLevel(){
+    return this->_level.getLevelNumber();
+}
 void Game::renderBoard(){
     this->_board.fillBoard(this->_level.getMap());
     _boards.push(_board);
+}
+void Game::renderLastBoard(){
+    this->_level = Level(99);
+    this->_board = Board(_level);
+    this->_board.fillBoard(this->_level.getMap());
 }
 void Game::move(Direction direction){ 
     for (Item& item : this->_board.getMovables()){
@@ -122,7 +130,6 @@ void Game::restartLevel(){
 void Game::nextLevel(){
     this->_level = Level(++lvl);
     this->_board = Board(_level);
-
 }
 
 void Game::undo(){
@@ -131,4 +138,77 @@ void Game::undo(){
         _boards.pop();
 
     }
+}
+
+void Game::saveGame(){
+    std::vector<std::vector<std::string>> map;
+    for (unsigned int i = 0; i < _board.getArray().size()-1; ++i) {
+        for (unsigned int j = 0; j < _board.getArray()[i].size()-1; ++j) {
+            Position pos(i, j);
+            Type type = _board.getItemAt(pos).getType();
+            std::string item;
+            std::vector<std::string> words;
+            switch (type) {
+            case Type::WALL:
+                item = "wall";
+                break;
+            case Type::TEXT_WALL:
+                item = "text_wall";
+                break;
+            case Type::ROCK:
+                item = "rock";
+                break;
+            case Type::TEXT_ROCK:
+                item = "text_rock";
+                break;
+            case Type::METAL:
+                item = "metal";
+                break;
+            case Type::FLAG:
+                item = "flag";
+                break;
+            case Type::TEXT_FLAG:
+                item = "text_flag";
+                break;
+            case Type::BABA:
+                item = "baba";
+                break;
+            case Type::TEXT_BABA:
+                item = "text_baba";
+                break;
+            case Type::TEXT_WIN:
+                item = "win";
+                break;
+            case Type::TEXT_YOU:
+                item = "you";
+                break;
+            case Type::TEXT_IS:
+                item = "is";
+                break;
+            case Type::TEXT_STOP:
+                item = "stop";
+                break;
+            case Type::TEXT_PUSH:
+                item = "push";
+                break;
+            case Type::TEXT_BEST:
+                item = "best";
+                break;
+            case Type::LAVA:
+                item = "lava";
+                break;
+            case Type::TEXT_LAVA:
+                item = "text_lava";
+                break;
+
+            default:
+                continue;
+            }
+            words.push_back(item);
+            words.push_back(std::to_string(i-1));
+            words.push_back(std::to_string(j-1));
+            map.push_back(words);
+        }
+    }
+    this->_level.writeLevel(map);
 }

@@ -2,6 +2,11 @@
 #define GAME_H
 #include "board.h"
 #include "level.h"
+#include <iostream>
+#include <string>
+#include <vector>
+#include <fstream>
+#include <sstream>
 #include <stack>
 
 /**
@@ -21,8 +26,10 @@ class Game{
 public:
     Game();
     Board& getBoard();
+    int getLevel();
     //TODO documentation
     void renderBoard();
+    void renderLastBoard();
     /**
      * @brief restartLevel, to restate the level.
      */
@@ -53,6 +60,7 @@ public:
      */
     bool pushItems(Board& borde,Position& pos, Direction dir);
     void undo();
+    void saveGame();
 };
 
 #endif // GAME_H

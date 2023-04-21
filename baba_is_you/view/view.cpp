@@ -3,6 +3,22 @@
 View::View() {
 }
 
+void View::WelcomeMessage(){
+    std::cout << "------- BABA IS YOU -------" << std::endl;
+    printHelp();
+    std::cout << "MADE BY: YOUSSEF RAJOUL & TAREQ AHMED & PBT" << std::endl;
+    std::cout << "Do you want Start from your last save y/n ?" << std::endl;
+}
+
+void View::printHelp(){
+    std::cout << "Enter z/q/s/d to Move" << std::endl;
+    std::cout << "Enter r to Restart" << std::endl;
+    std::cout << "Enter u to Undo" << std::endl;
+    std::cout << "Enter o to save your progress" << std::endl;
+    std::cout << "Enter h to Show Help" << std::endl;
+    std::cout << "Enter x to Exit" << std::endl;
+}
+
 void View::printBoard(Game& game){
     for (int i = 0; i < 20; i++) {
         for (int j = 0; j < 20; j++) {
@@ -15,16 +31,19 @@ void View::printBoard(Game& game){
         std::cout << std::endl;
     }
 }
-std::string View::askDirection(){
-    std::cout << "Eter z for Up"<< std::endl;
-    std::cout << "Eter s for Down"<< std::endl;
-    std::cout << "Eter q for Lift"<< std::endl;
-    std::cout << "Eter d for Right"<< std::endl;
-
+std::string View::askInput(){
     std::string d;
+    std::cout << "Player Input: ";
     std::cin >> d;
-    std::cout << "Direction: "<< d << std::endl;
     return d;
+}
+
+void View::printLevel(int level){
+    std::cout << "--------------- Level: " << level+1 << " ---------------" << std::endl;
+}
+
+void View::printBye(){
+    std::cout<<"#### Game Over, Bye #### "<< std::endl;
 }
 
 void View::printGameOver(){

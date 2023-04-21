@@ -32,6 +32,8 @@ public:
     std::pair<Type, Status> translateFile(std::string word);
     int getRows();
     int getCols();
+    int getLevelNumber();
+    void writeLevel(std::vector<vector<std::string>> board);
 };
 
 #endif // LEVEL_H

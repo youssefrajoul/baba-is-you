@@ -15,8 +15,9 @@ add_executable(baba_is_you direction.h direction.cpp position.h
     main-console.cpp
     view/view.h view/view.cpp
     controller/controller.h controller/controller.cpp
-   test/test.h test/test.cpp
-    )
+#    observer/observer.h observer/observer.cpp
+    test/test.h test/test.cpp
+)
 
 install(TARGETS baba_is_you
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})

@@ -58,7 +58,6 @@ bool Item::isStop(){
 
 std::ostream& operator<<(std::ostream& out, Item obj){
     return out << static_cast<char>(obj.getType());
-
 }
 
 bool Item::operator==(Item & lhs){

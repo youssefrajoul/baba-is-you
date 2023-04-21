@@ -2,6 +2,7 @@
 #include "status.h"
 #include "type.h"
 
+
 Level::Level(int level): _level(level){
     string filePath = "../baba_is_you/levels/level_" + std::to_string(this->_level) + ".txt";
     ifstream infile(filePath);
@@ -31,6 +32,11 @@ std::vector<vector<std::string>> Level::getMap(){
     return this->_map;
 }
 
+int Level::getLevelNumber(){
+    return this->_level;
+}
+
+
 std::pair<Type, Status> Level::translateFile(std::string word){
     Type type;
     Status status;
@@ -45,7 +51,6 @@ std::pair<Type, Status> Level::translateFile(std::string word){
     else if (word == "metal") {
         type = Type::METAL;
         status = Status::NOTHING;
-
     }
     else if (word == "is") {
         type = Type::TEXT_IS;
@@ -135,4 +140,19 @@ int Level::getRows(){
 
 int Level::getCols(){
     return std::stoi(this->_map[0][2]);
+}
+
+void Level::writeLevel(std::vector<vector<std::string>> map){
+    std::ofstream file("../baba_is_you/levels/level_99.txt", std::ios::trunc);
+
+    if (!file.is_open()) {
+      std::cout << "Failed to save your progress!\n";
+    }
+    file << "board " << getRows() << " " << getCols() << std::endl;
+    for (unsigned int i = 0; i < map.size(); ++i) {
+        file << map[i][0] << " " << map[i][2] << " " << map[i][1] << std::endl;
+    }
+
+    file.close();
+    std::cout << "Progress saved successfully" << std::endl;
 }

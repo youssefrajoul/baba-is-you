@@ -11,7 +11,10 @@ public:
     View();
     void WelcomeMessage();
     void printBoard(Game& game);
-    std::string askDirection();
+    void printHelp();
+    std::string askInput();
+    void printLevel(int level);
+    void printBye();
     void printGameOver();
 };
 

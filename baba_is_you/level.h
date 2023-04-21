@@ -28,11 +28,22 @@ public:
      * @return a vector of string
      */
     std::vector<vector<std::string>> getMap();
-    //TODO documentation
+    /**
+     * @brief translateFile, this method translate words of the file level
+     * to real items.
+     * @param word is a string from the file
+     * @return pair of type with default status for each type
+     */
     std::pair<Type, Status> translateFile(std::string word);
     int getRows();
     int getCols();
     int getLevelNumber();
+    /**
+     * @brief writeLevel, writes lines in a file
+     * if the file doesn't exist it creates new one.
+     * @param board is a 2D vector of the items of the board translated
+     * to strings.
+     */
     void writeLevel(std::vector<vector<std::string>> board);
 };
 

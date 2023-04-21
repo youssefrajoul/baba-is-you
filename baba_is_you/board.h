@@ -44,6 +44,10 @@ public:
      */
     void fillBoard(std::vector<std::vector<string> > items);
     //to do documentation
+    /**
+     * @brief setBorders, puts the borders of the board.
+     * @param pos position where to put that border item.
+     */
     void setBorders(Position pos);
     void setItem(Item &item, Position &pos);
     Item& getItemAt(Position pos);
@@ -59,7 +63,10 @@ public:
      * the vectore of movavle items.
      */
     void updateMovableItems();
-    // to do documentation
+    /**
+     * @brief getMovables, Gets the items that respects the rule type is you
+     * @return return items to be moved
+     */
     std::vector<Item>& getMovables();
     /**
      * @brief nextPosType, this function return
@@ -77,23 +84,45 @@ public:
      * @return the status of the item
      */
     Status nextPosStatus(Position pos, Direction dir);
+//    /**
+//     * @brief getTextType
+//     * @return
+//     */
+//    std::vector<Item>& getTextType();
     // to do documentation
-    std::vector<Item>& getTextType();
-    // to do documentation
-    bool isTypeText(int x, int y);
-    // to do documentation
+//    bool isTypeText(int x, int y);
+    /**
+     * @brief updateType, sets the type of the item
+     * @param type is the old type
+     * @param newType is the newest
+     */
     void updateType(Type type, Type newType);
-    // to do documentation
+    /**
+     * @brief updateRules, Updates the rules of the game (ex: wall is push)
+     */
     void updateRules();
-    // to do documentation
+    /**
+     * @brief horizontalRule, update horizontal rules (ex: wall is push)
+     * @param typePos the type that will get the rule
+     * @param ruleExists check if the rule was modified or not
+     * if not gives the status/rule nothing to the type
+     */
     void horizontalRule(Position typePos, bool &ruleExists);
-    // to do documentation
+    /**
+     * @brief verticalRule, updates vertical rules.
+     * @param typePos
+     * @param ruleExists
+     */
     void verticalRule(Position typePos, bool &ruleExists);
-    // to do documentation
+    /**
+     * @brief updateItemsStatus, updates the status of each item that exists in the map
+     */
     void updateItemsStatus();
-    // to do documentation
+    /**
+     * @brief findTypeTexts, looks and saves the text items
+     * like water, baba, rock
+     */
     void findTypeTexts();
-    // to do documentation
     /**
      * @brief isInside, to test if the given
      * position is inside the board.

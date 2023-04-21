@@ -27,8 +27,15 @@ public:
     Game();
     Board& getBoard();
     int getLevel();
-    //TODO documentation
+    /**
+     * @brief renderBoard, Gets items from level
+     * and put it on the board.
+     */
     void renderBoard();
+    /**
+     * @brief renderLastBoard, Gets items from the last progress
+     * and put it on the board.
+     */
     void renderLastBoard();
     /**
      * @brief restartLevel, to restate the level.
@@ -59,7 +66,14 @@ public:
      * @return
      */
     bool pushItems(Board& borde,Position& pos, Direction dir);
+    /**
+     * @brief undo, Undo the last movement made
+     * by the player.
+     */
     void undo();
+    /**
+     * @brief saveGame, saves the progress of the player
+     */
     void saveGame();
 };
 

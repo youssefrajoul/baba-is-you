@@ -5,6 +5,7 @@ int lvl = 0;
 Game::Game() {
     this->_level = Level(lvl);
     this->_board = Board(_level);
+    this->_boards = stack<Board>();
 }
 
 Board& Game::getBoard(){
@@ -12,6 +13,7 @@ Board& Game::getBoard(){
 }
 void Game::renderBoard(){
     this->_board.fillBoard(this->_level.getMap());
+    _boards.push(_board);
 }
 void Game::move(Direction direction){ 
     for (Item& item : this->_board.getMovables()){
@@ -67,6 +69,7 @@ void Game::move(Direction direction){
 
         }
     }
+    _boards.push(_board);
 }
 
 
@@ -120,4 +123,12 @@ void Game::nextLevel(){
     this->_level = Level(++lvl);
     this->_board = Board(_level);
 
+}
+
+void Game::undo(){
+    if(!_boards.empty()){
+    this->_board = _boards.top();
+        _boards.pop();
+
+    }
 }

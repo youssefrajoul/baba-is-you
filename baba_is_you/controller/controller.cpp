@@ -18,6 +18,8 @@ void Controller::start(){
             this->_game.move(Direction::RIGHT);
         }else if(d == "s"){
             this->_game.move(Direction::DOWN);
+        }else if(d == "u"){
+            this->_game.undo();
         }
         if(_game.getBoard().isWin()){
             _game.nextLevel();

@@ -2,6 +2,7 @@
 #define GAME_H
 #include "board.h"
 #include "level.h"
+#include <stack>
 
 /**
  * @brief The Game class, represent the logic
@@ -16,6 +17,7 @@ class Game{
      * @brief _level, the level of the game
      */
     Level _level;
+    std::stack<Board> _boards;
 public:
     Game();
     Board& getBoard();
@@ -50,6 +52,7 @@ public:
      * @return
      */
     bool pushItems(Board& borde,Position& pos, Direction dir);
+    void undo();
 };
 
 #endif // GAME_H

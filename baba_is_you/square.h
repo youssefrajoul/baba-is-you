@@ -1,14 +1,15 @@
 #ifndef SQUARE_H
 #define SQUARE_H
-#include <list>
+#include <vector>
 #include "item.h"
+
 /**
  * @brief The Square class, represent a
  * square on the board of the game.
  * it's a list of item.
  */
 class Square{
-    std::list<Item> _items;
+    std::vector<Item> _items;
 public:
     Square() = default;
     Square(Item &item);
@@ -23,7 +24,7 @@ public:
      * return all the items in square.
      * @return a list of Item;
      */
-    std::list<Item>& getAllItems();
+    std::vector<Item>& getAllItems();
     /**
      * @brief addItem, to add a new item
      *  in the square

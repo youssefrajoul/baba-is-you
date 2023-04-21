@@ -2,7 +2,6 @@
 
 int main()
 {
-
     Game game;
     View view;
     Controller controller = Controller(game, view);

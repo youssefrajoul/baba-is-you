@@ -4,11 +4,10 @@
 #include "square.h"
 #include "item.h"
 #include "level.h"
+
 #include <vector>
 #include <array>
 #include <map>
-
-
 
 /**
  * @brief The Board class, this class
@@ -27,15 +26,14 @@ class Board{
     std::map<Type, Status> _itemsStatus;
     /**
      * @brief _textTypeItems, to do.
-     */
+    */
     std::vector<Item> _textTypeItems;
     /**
      * @brief _movableItems.
      */
     std::vector<Item> _movableItems;
-
 public:
-
+    //    these methods need to be in order cause too much (new Class?)
     Board(Level& level);
     Board() = default;
     std::array<std::array<Square, 20>, 20>& getArray();
@@ -44,9 +42,9 @@ public:
      * with right item at the right position.
      * @param items, the level as a text.
      */
-    void fillBoard(std::vector<std::vector<std::string>> items);
+    void fillBoard(std::vector<std::vector<string> > items);
     //to do documentation
-    std::pair<Type, Status> getTypeStatus(std::string word);
+    void setBorders(Position pos);
     void setItem(Item &item, Position &pos);
     Item& getItemAt(Position pos);
     /**
@@ -61,6 +59,7 @@ public:
      * the vectore of movavle items.
      */
     void updateMovableItems();
+    // to do documentation
     std::vector<Item>& getMovables();
     /**
      * @brief nextPosType, this function return
@@ -81,15 +80,20 @@ public:
     // to do documentation
     std::vector<Item>& getTextType();
     // to do documentation
+    bool isTypeText(int x, int y);
+    // to do documentation
+    void updateType(Type type, Type newType);
+    // to do documentation
+    void updateRules();
+    // to do documentation
+    void horizontalRule(Position typePos, bool &ruleExists);
+    // to do documentation
+    void verticalRule(Position typePos, bool &ruleExists);
+    // to do documentation
     void updateItemsStatus();
     // to do documentation
-    Status translateTextStatus(Type type);
+    void findTypeTexts();
     // to do documentation
-    Type translateTextType(Type type);
-    // to do documentation
-    void findTextType();
-    // to do documentation
-    bool isText(int x, int y);
     /**
      * @brief isInside, to test if the given
      * position is inside the board.
@@ -97,41 +101,6 @@ public:
      * @return true if it's inside, false if not
      */
     bool isInside(Position position);
-    /**
-     * @brief isEmpty, to test if the given
-     * position is an empty square.
-     * @param pos the given position
-     * @return true if it's empty, false if not
-     */
-    bool isEmpty(Position pos);
-    /**
-     * @brief isPushable,to test if the given
-     * position has a pushable item.
-     * @param pos, given position
-     * @return true if it's pushable, false if not
-     */
-    bool isPushable(Position pos);
-    /**
-     * @brief isKiller, to test if the given
-     * position has a killer item.
-     * @param pos, the given position
-     * @return true if it's killer, false if not
-     */
-    bool isKiller(Position pos);
-    /**
-     * @brief isSink, to test if the given
-     * position has a sink item.
-     * @param pos given position
-     * @return true if it's sink, false if not
-     */
-    bool isSink(Position pos);
-    /**
-     * @brief isWinable,to test if the given
-     * position has a winable item.
-     * @param pos, the given position
-     * @return  true if it's winabel, false if not
-     */
-    bool isWinable(Position pos);
     /**
      * @brief isWin, getter for _win membre
      * @return
@@ -142,13 +111,6 @@ public:
      * @param b
      */
     void setWin(bool b);
-    /**
-     * @brief isStop, to test if the given
-     * position has a stop item.
-     * @param pos, the given position
-     * @return true if it's stop, false if not
-     */
-    bool isStop(Position pos);
 };
 
 #endif // BOARD_H

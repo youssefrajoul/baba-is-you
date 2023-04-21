@@ -8,7 +8,7 @@ Item& Square::getTopItem(){
     return this->_items.back();
 }
 
-std::list<Item> &Square::getAllItems(){
+std::vector<Item> &Square::getAllItems(){
     return this->_items;
 }
 
@@ -17,7 +17,7 @@ void Square::addItem(Item &item){
 }
 
 void Square::cleanSquare(){
-//    _items.erase(_items.begin());
+    _items.erase(_items.begin());
 }
 
 void Square::removeTopItem(){

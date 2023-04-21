@@ -10,13 +10,12 @@ set(CMAKE_CXX_FLAGS "-Wall -pedantic-errors")
 add_executable(baba_is_you direction.h direction.cpp position.h
     position.cpp item.h item.cpp square.h square.cpp
     level.cpp level.h board.cpp board.h
-    status.cpp status.h
-    type.cpp type.h
-    text.h
+    type.h status.h typeStatus.h
     game.cpp game.h
     main-console.cpp
     view/view.h view/view.cpp
     controller/controller.h controller/controller.cpp
+    observer/observer.h observer/observer.cpp
     )
 
 install(TARGETS baba_is_you

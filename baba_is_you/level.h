@@ -1,5 +1,9 @@
 #ifndef LEVEL_H
 #define LEVEL_H
+
+#include "type.h"
+#include "status.h"
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -7,6 +11,7 @@
 #include <sstream>
 
 using namespace std;
+
 /**
  * @brief The Level class, represent
  * a level in the game.
@@ -23,6 +28,8 @@ public:
      * @return a vector of string
      */
     std::vector<vector<std::string>> getMap();
+    //TODO documentation
+    std::pair<Type, Status> translateFile(std::string word);
     int getRows();
     int getCols();
 };

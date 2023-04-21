@@ -19,7 +19,7 @@ class Game{
 public:
     Game();
     Board& getBoard();
-    //TO do documentation
+    //TODO documentation
     void renderBoard();
     /**
      * @brief restartLevel, to restate the level.
@@ -50,7 +50,6 @@ public:
      * @return
      */
     bool pushItems(Board& borde,Position& pos, Direction dir);
-
 };
 
 #endif // GAME_H

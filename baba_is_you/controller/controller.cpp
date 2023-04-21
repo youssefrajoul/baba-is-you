@@ -2,7 +2,6 @@
 
 
 Controller::Controller(Game& game, View& view) : _game(game), _view(view){
-    // std::cout << "Controller Object Creation" << std::endl;
 }
 
 void Controller::start(){
@@ -23,15 +22,11 @@ void Controller::start(){
         if(_game.getBoard().isWin()){
             _game.nextLevel();
             this->_game.renderBoard();
-            //this->_game.getBoard().updateMovableItems();
-
         }
 
         this->_game.getBoard().updateMovableItems();
         this->_view.printBoard(this->_game);
 
     }
-
-
-
+    _view.printGameOver();
 }

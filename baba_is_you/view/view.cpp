@@ -1,7 +1,6 @@
 #include "view.h"
 
 View::View() {
-    std::cout << "View Object Creation" << std::endl;
 }
 
 void View::printBoard(Game& game){

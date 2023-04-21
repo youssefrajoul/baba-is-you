@@ -1,5 +1,6 @@
 #ifndef TYPE_H
 #define TYPE_H
+
 /**
  * @brief The Type enum, represent the
  * types of an item

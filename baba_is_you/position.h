@@ -3,7 +3,6 @@
 #include "direction.h"
 #include <iostream>
 
-
 /**
  * @brief The Position class
  * this class represent the position.

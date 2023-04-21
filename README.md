@@ -46,3 +46,7 @@ int main()
     //return 0;
 }
 ```
+
+## Doxygen
+
+Dans le dossier Baba_is_you vous trouverez un fichier Doxyfile qui permet de generer la doc en HTML. 

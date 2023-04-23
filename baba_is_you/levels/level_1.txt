@@ -1,4 +1,4 @@
-board 18 18
+level 0 1
 grass 5 1
 grass 2 3
 grass 15 3

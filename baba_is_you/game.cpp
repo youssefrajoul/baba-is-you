@@ -12,18 +12,22 @@ Board& Game::getBoard(){
     return this->_board;
 }
 int Game::getLevel(){
-    return this->_level.getLevelNumber();
+    return this->_level.getLevel();
 }
 void Game::renderBoard(){
     this->_board.fillBoard(this->_level.getMap());
     _boards.push(_board);
 }
 void Game::renderLastBoard(){
-    this->_level = Level(99);
+    this->_level = Level(1999);
     this->_board = Board(_level);
     this->_board.fillBoard(this->_level.getMap());
 }
-void Game::move(Direction direction){ 
+
+// TODO bug detected: if movable items are more than one item the movement to the right doesn't function properly
+void Game::move(Direction direction){
+    // TODO, discuss the next line with tareq
+    _boards.push(_board);
     for (Item& item : this->_board.getMovables()){
         Position oldPos = item.getPosition();
         Position nextPos = item.getPosition().nextPos(direction);
@@ -45,7 +49,6 @@ void Game::move(Direction direction){
                     contenu = pushItems(this->_board,oldPos,direction);
                     if(!contenu){
                         break;
-
                     }
                 }
                 //pour retester s'il y a un win
@@ -77,7 +80,6 @@ void Game::move(Direction direction){
 
         }
     }
-    _boards.push(_board);
 }
 
 
@@ -85,7 +87,6 @@ bool Game::pushItems(Board& board, Position &pos, Direction dir){
     bool contenu {true};
     Position nextPos = pos.nextPos(dir);
     if(_board.isInside(nextPos.nextPos(dir))){
-        std::cout << "isInside : true" << std::endl;
         if(board.getItemAt(nextPos).isPushable()){
             contenu = pushItems(board,nextPos,dir);
 
@@ -122,21 +123,29 @@ bool Game::isGameOver(){
 
 }
 void Game::restartLevel(){
-    this->_level = Level(lvl);
+    this->_level = Level(getLevel());
     this->_board = Board(_level);
+    // TODO, discuss with tareq
+    cleanStack();
+}
 
+// TODO, discuss with tareq
+void Game::cleanStack(){
+    while (!_boards.empty()) {
+        _boards.pop();
+    }
 }
 
 void Game::nextLevel(){
-    this->_level = Level(++lvl);
+    this->_level = Level(getLevel()+1);
     this->_board = Board(_level);
+    cleanStack();
 }
 
 void Game::undo(){
     if(!_boards.empty()){
     this->_board = _boards.top();
         _boards.pop();
-
     }
 }
 
@@ -200,7 +209,18 @@ void Game::saveGame(){
             case Type::TEXT_LAVA:
                 item = "text_lava";
                 break;
-
+            case Type::WATER:
+                item = "water";
+                break;
+            case Type::TEXT_WATER:
+                item = "text_water";
+                break;
+            case Type::GRASS:
+                item = "grass";
+                break;
+            case Type::TEXT_GRASS:
+                item = "text_grass";
+                break;
             default:
                 continue;
             }

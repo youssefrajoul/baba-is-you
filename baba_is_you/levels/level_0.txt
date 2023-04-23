@@ -1,4 +1,4 @@
-board 18 18
+level 0 0
 text_wall 4 4
 is 5 4
 stop 6 4

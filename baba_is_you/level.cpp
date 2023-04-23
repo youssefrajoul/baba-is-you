@@ -2,6 +2,8 @@
 #include "status.h"
 #include "type.h"
 
+// TODO you have to create items in File Class and then pass it to fill board method, means that the translation method must
+// be called here not in Board Class
 
 Level::Level(int level): _level(level){
     string filePath = "../baba_is_you/levels/level_" + std::to_string(this->_level) + ".txt";
@@ -23,7 +25,7 @@ Level::Level(int level): _level(level){
         vector<string> words = { item, x, y };
         _map.push_back(words);
     }
-
+    this->_level = std::stoi(this->_map[0][2]);
     infile.close(); // Close the file
 }
 
@@ -32,7 +34,7 @@ std::vector<vector<std::string>> Level::getMap(){
     return this->_map;
 }
 
-int Level::getLevelNumber(){
+int Level::getLevel(){
     return this->_level;
 }
 
@@ -134,21 +136,21 @@ std::pair<Type, Status> Level::translateFile(std::string word){
     return std::make_pair(type, status);
 }
 
-int Level::getRows(){
-    return std::stoi(this->_map[0][1]);
-}
+//int Level::getRows(){
+//    return std::stoi(this->_map[0][1]);
+//}
 
-int Level::getCols(){
-    return std::stoi(this->_map[0][2]);
-}
+//int Level::getCols(){
+//    return std::stoi(this->_map[0][2]);
+//}
 
 void Level::writeLevel(std::vector<vector<std::string>> map){
-    std::ofstream file("../baba_is_you/levels/level_99.txt", std::ios::trunc);
+    std::ofstream file("../baba_is_you/levels/level_1999.txt", std::ios::trunc);
 
     if (!file.is_open()) {
       std::cout << "Failed to save your progress!\n";
     }
-    file << "board " << getRows() << " " << getCols() << std::endl;
+    file << "level " << 0 << " " << this->_level << std::endl;
     for (unsigned int i = 0; i < map.size(); ++i) {
         file << map[i][0] << " " << map[i][2] << " " << map[i][1] << std::endl;
     }

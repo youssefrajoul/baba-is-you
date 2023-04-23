@@ -2,8 +2,8 @@
 #include "typeStatus.h"
 
 Board::Board(Level& level) : _level(level){
-    this->_rows = this->_level.getRows();
-    this->_cols = this->_level.getCols();
+    this->_rows = 18;
+    this->_cols = 18;
     this->_win = false;
     for (int i = 0; i < 20; i++) {
         for (int j = 0; j < 20; j++) {

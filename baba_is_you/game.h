@@ -75,6 +75,9 @@ public:
      * @brief saveGame, saves the progress of the player
      */
     void saveGame();
+
+    void cleanStack();
+
 };
 
 #endif // GAME_H

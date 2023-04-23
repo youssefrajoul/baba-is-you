@@ -35,9 +35,10 @@ public:
      * @return pair of type with default status for each type
      */
     std::pair<Type, Status> translateFile(std::string word);
-    int getRows();
-    int getCols();
-    int getLevelNumber();
+//    int getRows();
+//    int getCols();
+    int getLevel();
+    void setLevel();
     /**
      * @brief writeLevel, writes lines in a file
      * if the file doesn't exist it creates new one.

@@ -45,7 +45,7 @@ public:
     void fillBoard(std::vector<std::vector<string> > items);
     //to do documentation
     /**
-     * @brief setBorders, puts the borders of the board.
+     * @brief setBorders, puts the borders * around the board.
      * @param pos position where to put that border item.
      */
     void setBorders(Position pos);

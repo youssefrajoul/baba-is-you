@@ -8,6 +8,8 @@
 #include <QVBoxLayout>
 #include <QFontDatabase>
 //#include "view/gui.h"
+class Gui;
+class Game;
 
 
 /**
@@ -15,12 +17,14 @@
  */
 class QStartWindow : public QWidget {
     Q_OBJECT
+
+
 public:
     /**
      * @brief QStartWindow constructor of QStartWindow.
      * @param parent
      */
-    explicit QStartWindow(QWidget * parent = nullptr);
+    explicit QStartWindow(Gui * parent);
     /**
      * @brief getLevel getter of the level.
      * @return the level of the game
@@ -29,6 +33,8 @@ public:
     ~QStartWindow() = default;
 
     QPushButton * get_start();
+
+    Gui * getParent();
 
 //signals:
 //    /**
@@ -53,6 +59,7 @@ private:
      */
     QPushButton * _start;
     QPushButton * _last;
+    Gui * _parent;
 
 
 };

@@ -1,6 +1,7 @@
 #include "startWindow.h"
+#include "view/gui.h"
 
-QStartWindow::QStartWindow(QWidget * parent) : QWidget {parent} {
+QStartWindow::QStartWindow(Gui * parent) : _parent{parent}{
     QVBoxLayout * menu = new QVBoxLayout();
     _logo = new QLabel("Baba is You");
     QFontDatabase::addApplicationFont(("./resource/fonts/Quicksand.otf"));
@@ -8,25 +9,31 @@ QStartWindow::QStartWindow(QWidget * parent) : QWidget {parent} {
     _logo->setFont(font);
     _logo->setAlignment(Qt::AlignCenter);
     menu->addWidget(_logo);
-    _start = new QPushButton("Launch");
+    _start = new QPushButton("Start");
     menu->addWidget(_start);
-    _last = new QPushButton("launch saved level");
+    _last = new QPushButton("Start saved level");
     menu->addWidget(_last);
     setLayout(menu);
     adjustSize();
-
 //    QPixmap backgroundImage("./resource/img/images/backg.jpg");
 //    QString styleSheet = QString("QWidget { background-image: url(./resource/img/images/backg.jpg); }").arg(backgroundImage.toImage().scaled(this->size()).width(), backgroundImage.toImage().scaled(this->size()).height());
 
 //    _logo->setStyleSheet(styleSheet);
 
 
-//    connect(_start,SIGNAL(clicked()), this, SLOT(start()));
+    connect(_start,&QPushButton::clicked, this, &QStartWindow::start);
+}
+
+Gui *QStartWindow::getParent(){
+    return this->_parent;
 }
 
 
 void QStartWindow::start(){
     this->close();
+   // QView * itemView = qobject_cast<QView*>(parent());
+    getParent()->displayBoards();
+    //std::cout << "test test "   << std::endl;
 }
 
 

@@ -5,18 +5,19 @@
 #include "startWindow.h"
 #include "qboard.h"
 #include "observer/observer.h"
-class QView : public QWidget , public Observer{
+class Gui : public QWidget{
     Game &_game;
     QStartWindow * _startWindow;
     QHBoxLayout * _window;
     QBoard * _qboard;
+
 
 //private slots:
 
 //    void displayBoard();
 
 public:
-    explicit QView(Game &game,QWidget *parent = nullptr);
+    explicit Gui(Game &game/*,QWidget *parent*/);
     void displayStartWindow();
     void displayBoards();
 };

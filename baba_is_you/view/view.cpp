@@ -21,11 +21,11 @@ void View::printHelp(){
 
 void View::update(Observable* observable){
     Game* game = static_cast<Game*>(observable);
-    printLevel(game->getLevel());
     printBoard(*game);
 }
 
 void View::printBoard(Game& game){
+    printLevel(game.getLevel());
     for (int i = 0; i < 20; i++) {
         for (int j = 0; j < 20; j++) {
             std::cout << " " << static_cast<char>(game

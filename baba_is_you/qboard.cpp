@@ -7,8 +7,9 @@ QBoard::QBoard(Game &game,QWidget * parent):QWidget{parent}, _game(game){
 
 void QBoard::updateBoard(){
     _board->setContentsMargins(0,0,0,0);
-    _board->setSpacing(1);
+    _board->setSpacing(0);
    // _board->
+    _game.renderBoard();
     for(unsigned row = 0; row < 20; row++) {
         for(unsigned column = 0; column < 20; column++) {
             Item item = _game

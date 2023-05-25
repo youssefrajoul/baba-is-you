@@ -88,7 +88,8 @@ QItem::QItem(Item &item) : _item(item){
 
     }
     QPixmap qp(url);
-    qp.scaled(30,30);
 
-    this->setPixmap(qp);
+
+    this->setPixmap(qp.scaled(30,30));
+  //  this->setScaledContents(true);
 }

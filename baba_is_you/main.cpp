@@ -37,8 +37,8 @@ int main(int argc, char *argv[])
 //    qw->show();
 
     Game g;
-    QView view{g};
-    view.displayBoards();
+    Gui view{g};
+    view.displayStartWindow();
 
 
     return a.exec();

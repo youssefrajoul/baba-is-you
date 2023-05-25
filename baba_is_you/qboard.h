@@ -15,6 +15,7 @@ public:
    explicit QBoard(Game &game,QWidget *parent = nullptr);
     void updateBoard();
     QGridLayout * getGrid();
+   // ~QBoard();
 
 };
 

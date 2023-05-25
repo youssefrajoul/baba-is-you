@@ -12,6 +12,7 @@ QMAKE_CXXFLAGS += -std=c++11 -pedantic-errors
 
 SOURCES += \
         Qitem.cpp \
+    controller/qcontroller.cpp \
         main.cpp\
         board.cpp\
         direction.cpp\
@@ -52,6 +53,7 @@ HEADERS += \
         typeStatus.h\
         controller/controller.h\
         view/gui.h \
+        view/qcontroller.h \
         view/view.h\
         observer/observer.h\
         status.h

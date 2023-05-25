@@ -1,6 +1,6 @@
 #include <QApplication>
 #include "game.h"
-#include "qboard.h"
+#include "view/qcontroller.h"
 #include "view/gui.h"
 
 int main(int argc, char *argv[])
@@ -37,9 +37,10 @@ int main(int argc, char *argv[])
 //    qw->show();
 
     Game g;
-    Gui view{g};
-    view.displayStartWindow();
-
+    Gui *view =new Gui(g);
+    QController c{g,view};
+    c.play();
+  //  view->displayStartWindow();
 
     return a.exec();
 }

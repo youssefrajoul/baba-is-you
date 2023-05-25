@@ -30,7 +30,7 @@ Gui *QStartWindow::getParent(){
 
 
 void QStartWindow::start(){
-    this->close();
+    this->hide();
    // QView * itemView = qobject_cast<QView*>(parent());
     getParent()->displayBoards();
     //std::cout << "test test "   << std::endl;

@@ -5,11 +5,13 @@
 
 
 #include "../game.h"
+#include "../observer/observer.h"
 
-class View{
+class View : public Observer{
 public:
     View();
     void WelcomeMessage();
+    void update(Observable* observable);
     void printBoard(Game& game);
     void printHelp();
     std::string askInput();

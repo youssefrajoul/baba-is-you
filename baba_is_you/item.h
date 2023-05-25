@@ -51,6 +51,7 @@ public:
     bool isSink();
     bool isWinable();
     bool isStop();
+    bool isMovable();
     bool operator==(Item & lhs);
     friend std::ostream& operator<<(std::ostream& out, Item obj);
 

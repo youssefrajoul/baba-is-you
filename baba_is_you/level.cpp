@@ -6,7 +6,7 @@
 // be called here not in Board Class
 
 Level::Level(int level): _level(level){
-    string filePath = "../baba_is_you/levels/level_" + std::to_string(this->_level) + ".txt";
+    string filePath = "./levels/level_" + std::to_string(this->_level) + ".txt";
     ifstream infile(filePath);
     if (!infile.is_open()) {
         cout << filePath << endl;
@@ -70,17 +70,9 @@ std::pair<Type, Status> Level::translateFile(std::string word){
         type = Type::BABA;
         status = Status::MOVE;
     }
-    else if (word == "skull") {
-        type = Type::SKULL;
-        status = Status::NOTHING;
-    }
     else if (word == "lava") {
         type = Type::LAVA;
         status = Status::KILL;
-    }
-    else if (word == "ice") {
-        type = Type::ICE;
-        status = Status::NOTHING;
     }
     else if (word == "rock") {
         type = Type::ROCK;

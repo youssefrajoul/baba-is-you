@@ -1,0 +1,29 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resource/img/images/you.png</file>
+        <file>resource/img/images/baba.png</file>
+        <file>resource/img/images/cadre.png</file>
+        <file>resource/img/images/earth.png</file>
+        <file>resource/img/images/flag.png</file>
+        <file>resource/img/images/gras.png</file>
+        <file>resource/img/images/is.png</file>
+        <file>resource/img/images/kill.png</file>
+        <file>resource/img/images/lava.png</file>
+        <file>resource/img/images/metal.png</file>
+        <file>resource/img/images/push.png</file>
+        <file>resource/img/images/rock.png</file>
+        <file>resource/img/images/sink.png</file>
+        <file>resource/img/images/stop.png</file>
+        <file>resource/img/images/tbaba.png</file>
+        <file>resource/img/images/tflag.png</file>
+        <file>resource/img/images/tlava.png</file>
+        <file>resource/img/images/trock.png</file>
+        <file>resource/img/images/twall.png</file>
+        <file>resource/img/images/twater.png</file>
+        <file>resource/img/images/wall.png</file>
+        <file>resource/img/images/water.png</file>
+        <file>resource/img/images/win.png</file>
+        <file>resource/fonts/Quicksand.otf</file>
+        <file>resource/img/images/backg.jpg</file>
+    </qresource>
+</RCC>

@@ -2,6 +2,7 @@
 #define GAME_H
 #include "board.h"
 #include "level.h"
+#include "observer/observer.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -13,7 +14,7 @@
  * @brief The Game class, represent the logic
  * of the game.
  */
-class Game{
+class Game : public Observable{
     /**
      * @brief _board, the board of the game.
      */
@@ -78,6 +79,7 @@ public:
 
     void cleanStack();
 
+    void updateMovableItems();
 };
 
 #endif // GAME_H

@@ -1,19 +1,45 @@
-#include <iostream>
-#include <string>
-#include <vector>
-#include <map>
-
+#include <QApplication>
 #include "game.h"
-#include "board.h"
-#include "level.h"
+#include "qboard.h"
+#include "view/gui.h"
 
-int main()
+int main(int argc, char *argv[])
 {
-    std::cout << "test";
-    Level level(2);
-    Board board(level.getRows(), level.getCols());
-    Game game(board, level);
-    game.renderBoard();
-    board.printBoard();
-    return 0;
+    QApplication a(argc, argv);
+
+////  Position p(1,2);
+////  Type t = Type::BABA;
+////  Status s = Status::KILL;
+
+////  Item i(p,t,s);
+////  std::cout<< i<<std::endl;
+////  QItem qi(i);
+//  QPixmap qp("./resource/img/images/rock.png");
+//  QLabel *ql = new QLabel();
+//  ql->setPixmap(qp);
+//  QWidget *qw = new QWidget;
+////  //ql->show();
+////  //qi.show();
+
+
+//    Game g;
+//    //Game *ptrG = &g;
+//    g.renderBoard();
+//    QBoard b(g);
+//    b.updateBoard();
+//    //b.show();
+//    qw->setLayout(b.getGrid());
+//    qw->show();
+
+//    QGridLayout *qg = new QGridLayout();
+//    qw->setLayout(qg);
+//    qg->addWidget(ql,3,3);
+//    qw->show();
+
+    Game g;
+    QView view{g};
+    view.displayBoards();
+
+
+    return a.exec();
 }

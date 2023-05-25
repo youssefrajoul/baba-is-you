@@ -19,6 +19,12 @@ void View::printHelp(){
     std::cout << "Enter x to Exit" << std::endl;
 }
 
+void View::update(Observable* observable){
+    Game* game = static_cast<Game*>(observable);
+    printLevel(game->getLevel());
+    printBoard(*game);
+}
+
 void View::printBoard(Game& game){
     for (int i = 0; i < 20; i++) {
         for (int j = 0; j < 20; j++) {

@@ -6,16 +6,16 @@ Controller::Controller(Game& game, View& view) : _game(game), _view(view){
 
 void Controller::start(){
     this->_view.WelcomeMessage();
+    this->_game.attach(&_view);
     std::string i = this->_view.askInput();
     if(i == "y"){
         this->_game.renderLastBoard();
     } else {
         this->_game.renderBoard();
     }
-    this->_game.getBoard().updateMovableItems();
 
-    this->_view.printLevel(_game.getLevel());
-    this->_view.printBoard(this->_game);
+    this->_game.updateMovableItems();
+
     while (!this->_game.isGameOver()) {
         std::string d = this->_view.askInput();
         if(d == "z"){
@@ -45,10 +45,7 @@ void Controller::start(){
             this->_game.renderBoard();
         }
 
-        this->_game.getBoard().updateMovableItems();
-
-        this->_view.printLevel(_game.getLevel());
-        this->_view.printBoard(this->_game);
+        this->_game.updateMovableItems();
 
     }
     _view.printGameOver();

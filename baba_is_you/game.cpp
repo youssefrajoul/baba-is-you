@@ -80,6 +80,12 @@ void Game::move(Direction direction){
 
         }
     }
+//    notifyObserver();
+}
+
+void Game::updateMovableItems(){
+    getBoard().updateMovableItems();
+    notifyObserver();
 }
 
 
@@ -120,7 +126,6 @@ bool Game::pushItems(Board& board, Position &pos, Direction dir){
 
 bool Game::isGameOver(){
     return _board.getMovables().empty();
-
 }
 void Game::restartLevel(){
     this->_level = Level(getLevel());

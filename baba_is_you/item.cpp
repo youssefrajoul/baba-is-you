@@ -55,6 +55,10 @@ bool Item::isWinable(){
 bool Item::isStop(){
     return getStatus()== Status::STOP;
 }
+bool Item::isMovable(){
+    return getStatus()== Status::MOVE;
+}
+
 
 std::ostream& operator<<(std::ostream& out, Item obj){
     return out << static_cast<char>(obj.getType());

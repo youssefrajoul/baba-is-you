@@ -1,5 +1,6 @@
 #include "Qitem.h"
 
+
 QItem::QItem(Item &item) : _item(item){
     QString url = "./resource/img/images";
     Type type = _item.getType();

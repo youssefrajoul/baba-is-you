@@ -1,5 +1,4 @@
 level 0 0
-baba 0 0
 text_wall 4 4
 is 5 4
 stop 6 4
@@ -32,6 +31,7 @@ metal 13 7
 metal 14 7
 metal 3 8
 metal 4 8
+baba 5 8
 metal 6 8
 metal 7 8
 rock 8 8

@@ -21,7 +21,7 @@ void Gui::displayStartWindow() {
 void Gui::update(Observable *observable){
 //     *observable is used in Console but not in GUI
     Game* game = static_cast<Game*>(observable);
-    std::cout << game->isGameOver() << std::endl;
+    //std::cout << game->isGameOver() << std::endl;
     updateBoard();
 }
 
@@ -59,19 +59,15 @@ void Gui::keyPressEvent(QKeyEvent *event){
 
     switch(event->key()){
     case Qt::Key_Left :
-        std::cout<<"Left"<<std::endl;
         _game.move(Direction::LEFT);
         break;
     case Qt::Key_Right :
-        std::cout<<"Right"<<std::endl;
         _game.move(Direction::RIGHT);
         break;
     case Qt::Key_Up :
-        std::cout<<"Up"<<std::endl;
         _game.move(Direction::UP);
         break;
     case Qt::Key_Down :
-        std::cout<<"Down"<<std::endl;
         _game.move(Direction::DOWN);
         break;
     case Qt::Key_Z :

@@ -1,9 +1,19 @@
 # Baba is You
 ## Tareq "58600" and Youssef "59939
+
 pour le cours de Dev4, groupe D121 
 ## Introduction 
 Voici implémentation en c++ du Jeu "Baba is You" 
-Dans cette itération le jeu est implémenté pour jouer dans le terminal
+
+## comment utiliser 
+ pour se deplacer utiliser les flechs.
+ recomencer le level : 'r'
+ undo :'u'
+ sauvgarder un level : 's'
+
+<span style="color: red;"> Important</span>
+changer le working directery : \baba_is_you
+
 
 ##  la structure de dépot 
 

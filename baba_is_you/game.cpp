@@ -42,7 +42,7 @@ void Game::move(Direction direction){
             }else if(this->_board.getItemAt(nextPos).isWinable()){
                 _board.setWin(true);
             }
-            else if(_board.getItemAt(nextPos).isPushable()){
+            else if(_board.getItemAt(nextPos).isPushable() || _board.getItemAt(nextPos).isMovable()){
                 // pousser les item
                 bool contenu;
                 while(!_board.getItemAt(nextPos).isEmpty() && !_board.getItemAt(nextPos).isWinable()){
@@ -93,7 +93,7 @@ bool Game::pushItems(Board& board, Position &pos, Direction dir){
     bool contenu {true};
     Position nextPos = pos.nextPos(dir);
     if(_board.isInside(nextPos.nextPos(dir))){
-        if(board.getItemAt(nextPos).isPushable()){
+        if(board.getItemAt(nextPos).isPushable() || board.getItemAt(nextPos).isMovable()){
             contenu = pushItems(board,nextPos,dir);
 
         }else if (_board.getItemAt(nextPos).isEmpty() || _board.getItemAt(nextPos).isWinable()){

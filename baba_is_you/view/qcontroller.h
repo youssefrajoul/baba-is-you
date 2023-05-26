@@ -6,15 +6,8 @@ class QController : public QWidget {
     Game _game;
     Gui * _view;
 
-private slots:
-    /**
-     * @brief retrieveLevel slots when clicked on the button.
-     */
-    void play();
-
 public:
-    QController(Game game, Gui *view);
-//    void play();
+    QController(Game &game, Gui *view);
     void startGame();
 
 };

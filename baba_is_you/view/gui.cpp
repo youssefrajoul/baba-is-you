@@ -14,40 +14,40 @@ void Gui::displayStartWindow() {
     _window->addWidget(_startWindow);
     _window->setAlignment(Qt::AlignCenter);
     setLayout(_window);
-    //show();
-    //connect(_startWindow, SIGNAL(started(QString)), this, SLOT(addLevel(QString)));
-    //connect(_startWindow->get_start(),SIGNAL(clicked()),this,&Gui::displayBoards());
 }
 
 
-//TODO refaire cette methode
-void Gui::update(Observable* observable){
-    // Game* game = static_cast<Game*>(observable);
-    //printBoard(*game);
-    //displayBoards();
-    std::cout << "test from update" << std::endl;
+
+void Gui::update(Observable *observable){
+//     *observable is used in Console but not in GUI
+    Game* game = static_cast<Game*>(observable);
+    std::cout << game->isGameOver() << std::endl;
+    updateBoard();
 }
 
 void Gui::displayBoards(){
     _game.renderBoard();
     _qboard->updateBoard();
-    _window->addLayout(_qboard->getGrid());
+    _window->addLayout(_qboard);
     _window->setAlignment(Qt::AlignCenter);
     setLayout(_window);
+    this->_game.updateMovableItems();
 }
 
 void Gui::updateBoard(){
-    std::cout << "update board method" << std::endl;
-    _window->removeItem(_qboard->getGrid());
+    if(_game.getBoard().isWin()){
+        _game.nextLevel();
+        this->_game.renderBoard();
+    }
+    _window->removeItem(_qboard);
     delete _qboard;
     _qboard = new QBoard(_game);
     _qboard->updateBoard();
-    _window->addLayout(_qboard->getGrid());
-    _window->setAlignment(Qt::AlignCenter);
-    setLayout(_window);
+    _window->addLayout(_qboard);
 }
 
 void Gui::keyPressEvent(QKeyEvent *event){
+
     switch(event->key()){
     case Qt::Key_Left :
         std::cout<<"Left"<<std::endl;
@@ -79,7 +79,6 @@ void Gui::keyPressEvent(QKeyEvent *event){
         break;
     }
     _game.updateMovableItems();
-    updateBoard();
 }
 
 

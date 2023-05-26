@@ -6,7 +6,7 @@
 #include "qboard.h"
 #include <QKeyEvent>
 //#include "observer/observer.h"
-class Gui : public QWidget,public Observer{
+class Gui : public QWidget, public Observer{
     Game &_game;
     QStartWindow * _startWindow;
     QHBoxLayout * _window;
@@ -30,3 +30,4 @@ protected:
 };
 
 #endif // GUI_H
+

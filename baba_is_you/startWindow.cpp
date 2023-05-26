@@ -32,7 +32,7 @@ void QStartWindow::start(){
     this->hide();
    // QView * itemView = qobject_cast<QView*>(parent());
     getParent()->displayBoards();
-    emit startClicked();
+//    emit startClicked();
 
     //std::cout << "test test "   << std::endl;
 }

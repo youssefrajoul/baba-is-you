@@ -24,6 +24,7 @@ public:
     }
 
     void notifyObserver(){
+        std::cout << observers.size() << std::endl;
         for (Observer* observer : observers) {
             observer->update(this);
         }

@@ -2,22 +2,19 @@
 #define QBOARD_H
 #include <QWidget>
 #include <QGridLayout>
-#include "Qitem.h"
 #include "game.h"
-class QBoard : public QWidget{
+class QBoard : public QGridLayout{
     Q_OBJECT
 
     Game &_game;
-    QGridLayout * _board;
+    //QGridLayout * _board;
 
 
 public:
-    explicit QBoard(Game &game,QWidget *parent = nullptr);
+    explicit QBoard(Game &game);
     void updateBoard();
     QGridLayout * getGrid();
-    ~QBoard() {
-        std::cout << "~QBoard" << std::endl;
-    };
+    ~QBoard();
 };
 
 #endif // QBOARD_H

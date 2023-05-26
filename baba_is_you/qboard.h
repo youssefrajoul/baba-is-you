@@ -5,18 +5,19 @@
 #include "Qitem.h"
 #include "game.h"
 class QBoard : public QWidget{
-   Q_OBJECT
+    Q_OBJECT
 
     Game &_game;
     QGridLayout * _board;
 
 
 public:
-   explicit QBoard(Game &game,QWidget *parent = nullptr);
+    explicit QBoard(Game &game,QWidget *parent = nullptr);
     void updateBoard();
     QGridLayout * getGrid();
-   // ~QBoard();
-
+    ~QBoard() {
+        std::cout << "~QBoard" << std::endl;
+    };
 };
 
 #endif // QBOARD_H

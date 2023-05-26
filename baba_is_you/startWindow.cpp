@@ -28,14 +28,14 @@ Gui *QStartWindow::getParent(){
     return this->_parent;
 }
 
-
 void QStartWindow::start(){
     this->hide();
    // QView * itemView = qobject_cast<QView*>(parent());
     getParent()->displayBoards();
+    emit startClicked();
+
     //std::cout << "test test "   << std::endl;
 }
-
 
 QPushButton * QStartWindow::get_start(){
     return this->_start;

@@ -42,7 +42,8 @@ public:
 //     * @param value the level
 //     */
 //    void started(QString value);
-
+signals:
+    void startClicked();
 private slots:
     /**
      * @brief retrieveLevel slots when clicked on the button.
@@ -60,7 +61,6 @@ private:
     QPushButton * _start;
     QPushButton * _last;
     Gui * _parent;
-
 
 };
 

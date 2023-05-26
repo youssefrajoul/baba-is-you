@@ -6,6 +6,7 @@ Gui::Gui(Game &game,QWidget * parent): QWidget{parent}, _game{game}{
     setWindowIcon(QIcon("./resource/img/images/baba.png"));
     setWindowTitle("Welcome on Baba Is You");
     show();
+    setFocusPolicy(Qt::StrongFocus);
 }
 
 void Gui::displayStartWindow() {
@@ -21,44 +22,48 @@ void Gui::displayStartWindow() {
 
 //TODO refaire cette methode
 void Gui::update(Observable* observable){
-   // Game* game = static_cast<Game*>(observable);
+    // Game* game = static_cast<Game*>(observable);
     //printBoard(*game);
-    displayBoards();
+    //displayBoards();
+    std::cout << "test from update" << std::endl;
 }
 
 void Gui::displayBoards(){
+    _game.renderBoard();
     _qboard->updateBoard();
     _window->addLayout(_qboard->getGrid());
-   _window->setAlignment(Qt::AlignCenter);
+    _window->setAlignment(Qt::AlignCenter);
     setLayout(_window);
 }
 
 void Gui::updateBoard(){
+    std::cout << "update board method" << std::endl;
+    _window->removeItem(_qboard->getGrid());
     delete _qboard;
     _qboard = new QBoard(_game);
+    _qboard->updateBoard();
     _window->addLayout(_qboard->getGrid());
+    _window->setAlignment(Qt::AlignCenter);
     setLayout(_window);
 }
 
 void Gui::keyPressEvent(QKeyEvent *event){
-      std::cout<<"Left"<<std::endl;
     switch(event->key()){
     case Qt::Key_Left :
-        _game.move(Direction::LEFT);
-        updateBoard();
         std::cout<<"Left"<<std::endl;
+        _game.move(Direction::LEFT);
         break;
     case Qt::Key_Right :
-        _game.move(Direction::RIGHT);
         std::cout<<"Right"<<std::endl;
+        _game.move(Direction::RIGHT);
         break;
     case Qt::Key_Up :
-        _game.move(Direction::UP);
         std::cout<<"Up"<<std::endl;
+        _game.move(Direction::UP);
         break;
     case Qt::Key_Down :
-        _game.move(Direction::DOWN);
         std::cout<<"Down"<<std::endl;
+        _game.move(Direction::DOWN);
         break;
     case Qt::Key_Z :
         _game.undo();
@@ -69,9 +74,12 @@ void Gui::keyPressEvent(QKeyEvent *event){
     case Qt::Key_Escape :
         this->close();
         break;
+    default:
+        QWidget::keyPressEvent(event);
+        break;
     }
-    QWidget::keyPressEvent(event);
-
+    _game.updateMovableItems();
+    updateBoard();
 }
 
 

@@ -15,13 +15,9 @@ QStartWindow::QStartWindow(Gui * parent) : _parent{parent}{
     menu->addWidget(_last);
     setLayout(menu);
     adjustSize();
-//    QPixmap backgroundImage("./resource/img/images/backg.jpg");
-//    QString styleSheet = QString("QWidget { background-image: url(./resource/img/images/backg.jpg); }").arg(backgroundImage.toImage().scaled(this->size()).width(), backgroundImage.toImage().scaled(this->size()).height());
-
-//    _logo->setStyleSheet(styleSheet);
-
 
     connect(_start,&QPushButton::clicked, this, &QStartWindow::start);
+    connect(_last,&QPushButton::clicked, this, &QStartWindow::startLast);
 }
 
 Gui *QStartWindow::getParent(){
@@ -39,4 +35,9 @@ void QStartWindow::start(){
 
 QPushButton * QStartWindow::get_start(){
     return this->_start;
+}
+
+void QStartWindow::startLast(){
+    this->hide();
+    getParent()->displayLastBoards();
 }

@@ -13,7 +13,7 @@
 class Position{
     int x,y;
 public:
-    Position() = default;
+    Position() : x{0}, y{0}{};
     Position(int x,int y);
     int getX();
     int getY();

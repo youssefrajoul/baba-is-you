@@ -36,12 +36,6 @@ public:
 
     Gui * getParent();
 
-//signals:
-//    /**
-//     * @brief started gives the level chosen by the player.
-//     * @param value the level
-//     */
-//    void started(QString value);
 signals:
     void startClicked();
 private slots:
@@ -49,13 +43,13 @@ private slots:
      * @brief retrieveLevel slots when clicked on the button.
      */
     void start();
-
+    void startLast();
 private:
     /**
-     * @brief logo_ the logo.
-     */
+         * @brief logo_ the logo.
+         */
     QLabel * _logo;
-     /**
+    /**
      * @brief start_ the button.
      */
     QPushButton * _start;

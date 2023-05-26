@@ -14,9 +14,9 @@ class Item{
 
 public:
     Item() = default;
-    Item(Position& pos, Type type, Status status);
+    Item(const Position &pos, Type type, Status status);
     Position& getPosition();
-    void setPosition(Position& pos);
+    void setPosition(const Position &pos);
     Type getType();
     void setType(Type type);
     Status getStatus();

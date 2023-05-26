@@ -51,9 +51,9 @@ HEADERS += \
         startWindow.h \
         type.h\
         typeStatus.h\
+        controller/qcontroller.h \
         controller/controller.h\
         view/gui.h \
-        view/qcontroller.h \
         view/view.h\
         observer/observer.h\
         status.h

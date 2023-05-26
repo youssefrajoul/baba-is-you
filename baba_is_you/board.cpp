@@ -131,14 +131,14 @@ void Board::updateRules(){
 }
 
 void Board::horizontalRule(Position typePos, bool &ruleExists){
-    Type typeH;
-    Status statusH;
     Position textIsPos(typePos.getX(), typePos.getY()+1);
     Position textStatusPos(typePos.getX(), typePos.getY()+2);
     bool isTextIsH = TypeStatus::isTextIs(getItemAt(textIsPos).getType());
     bool isStatusH = TypeStatus::isStatusText(getItemAt(textStatusPos).getType());
     bool isTypeH = TypeStatus::isTypeText(getItemAt(textStatusPos).getType());
     if(isTextIsH && isStatusH) {
+        Type typeH;
+        Status statusH;
         typeH = TypeStatus::translateTextType(getItemAt(typePos).getType());
         statusH = TypeStatus::translateTextStatus(getItemAt(textStatusPos).getType());
         _itemsStatus[typeH] = statusH;
@@ -149,14 +149,14 @@ void Board::horizontalRule(Position typePos, bool &ruleExists){
 }
 
 void Board::verticalRule(Position typePos, bool &ruleExists){
-    Type typeV;
-    Status statusV;
     Position isPosDown(typePos.getX()+1, typePos.getY());
     Position statusPosDown(typePos.getX()+2, typePos.getY());
     bool isTextIsV = TypeStatus::isTextIs(getItemAt(isPosDown).getType());
     bool isStatusV = TypeStatus::isStatusText(getItemAt(statusPosDown).getType());
     bool isTypeV = TypeStatus::isTypeText(getItemAt(statusPosDown).getType());
     if(isTextIsV && isStatusV) {
+        Type typeV;
+        Status statusV;
         typeV = TypeStatus::translateTextType(getItemAt(typePos).getType());
         statusV = TypeStatus::translateTextStatus(getItemAt(statusPosDown).getType());
         _itemsStatus[typeV] = statusV;

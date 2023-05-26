@@ -44,8 +44,8 @@ void Game::move(Direction direction){
             }
             else if(_board.getItemAt(nextPos).isPushable() || _board.getItemAt(nextPos).isMovable()){
                 // pousser les item
-                bool contenu;
                 while(!_board.getItemAt(nextPos).isEmpty() && !_board.getItemAt(nextPos).isWinable()){
+                    bool contenu;
                     contenu = pushItems(this->_board,oldPos,direction);
                     if(!contenu){
                         break;
@@ -80,7 +80,7 @@ void Game::move(Direction direction){
 
         }
     }
-//    notifyObserver();
+    //    notifyObserver();
 }
 
 void Game::updateMovableItems(){
@@ -149,7 +149,7 @@ void Game::nextLevel(){
 
 void Game::undo(){
     if(!_boards.empty()){
-    this->_board = _boards.top();
+        this->_board = _boards.top();
         _boards.pop();
     }
 }

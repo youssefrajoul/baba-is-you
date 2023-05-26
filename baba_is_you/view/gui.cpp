@@ -46,6 +46,15 @@ void Gui::updateBoard(){
     _window->addLayout(_qboard);
 }
 
+void Gui::displayLastBoards(){
+    _game.renderLastBoard();
+    _qboard->updateBoard();
+    _window->addLayout(_qboard);
+    _window->setAlignment(Qt::AlignCenter);
+    setLayout(_window);
+    this->_game.updateMovableItems();
+}
+
 void Gui::keyPressEvent(QKeyEvent *event){
 
     switch(event->key()){
@@ -71,6 +80,9 @@ void Gui::keyPressEvent(QKeyEvent *event){
     case Qt::Key_R :
         _game.restartLevel();
         break;
+    case Qt::Key_S :
+            _game.saveGame();
+            break;
     case Qt::Key_Escape :
         this->close();
         break;

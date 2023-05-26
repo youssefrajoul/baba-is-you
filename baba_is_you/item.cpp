@@ -1,6 +1,6 @@
 #include "item.h"
 
-Item::Item(Position& pos, Type type, Status status){
+Item::Item(const Position& pos, Type type, Status status){
     this->_position = pos;
     this->_type = type;
     this->_status = status;
@@ -10,7 +10,7 @@ Position& Item::getPosition(){
     return this->_position;
 }
 
-void Item::setPosition(Position& pos){
+void Item::setPosition(const Position& pos){
     this->_position = pos;
 }
 

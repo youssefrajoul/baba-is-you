@@ -39,7 +39,7 @@ int Level::getLevel(){
 }
 
 
-std::pair<Type, Status> Level::translateFile(std::string word){
+std::pair<Type, Status> Level::translateFile(const std::string word){
     Type type;
     Status status;
     if (word == "grass") {

@@ -6,12 +6,11 @@ pour le cours de Dev4, groupe D121
 Voici implémentation en c++ du Jeu "Baba is You" 
 
 ## comment utiliser 
- pour se deplacer utiliser les flechs.
- recomencer le level : 'r'
- undo :'u'
- sauvgarder un level : 's'
-
-<span style="color: red;"> Important</span>
+pour se deplacer utiliser les flechs.
+recomencer le level : 'r'
+undo :'u'
+sauvgarder un level : 's'
+<span style="color: red;"> **Important**</span>
 changer le working directery : \baba_is_you
 
 
